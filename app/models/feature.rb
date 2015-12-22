@@ -9,4 +9,8 @@
 #
 
 class Feature < ActiveRecord::Base
+	has_many :residence_features
+	has_many :residences, through: :residence_features
+
+  validates :name, length: { maximum: 32 }
 end

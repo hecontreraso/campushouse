@@ -25,4 +25,16 @@ class Student < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # Where the student studies
+  belongs_to :university, inverse_of: :students
+  # Faved residences
+  has_many :favs
+  has_many :residences, through: :favs
+
+  validates :name, length: { maximum: 32 }
+  validates :semester, numericality: {
+  	greater_than_or_equal_to: 1,
+  	less_than_or_equal_to: 12
+  }
 end

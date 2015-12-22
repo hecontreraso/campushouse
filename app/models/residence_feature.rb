@@ -10,4 +10,6 @@
 #
 
 class ResidenceFeature < ActiveRecord::Base
+	belongs_to :feature
+	belongs_to :residence
 end

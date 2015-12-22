@@ -12,5 +12,8 @@
 require 'rails_helper'
 
 RSpec.describe UniversityResidence, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+	  it { should belong_to(:university) }
+	  it { should belong_to(:residence) }
+	end
 end

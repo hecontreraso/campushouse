@@ -9,5 +9,5 @@
 #
 
 class Picture < ActiveRecord::Base
-	belongs_to :imageable
+	belongs_to :residence
 end

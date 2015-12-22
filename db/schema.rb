@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20151222214931) do
 
   create_table "favs", force: :cascade do |t|
     t.integer  "student_id"
-    t.integer  "university_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "residence_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
+  add_index "favs", ["residence_id"], name: "index_favs_on_residence_id", using: :btree
   add_index "favs", ["student_id"], name: "index_favs_on_student_id", using: :btree
-  add_index "favs", ["university_id"], name: "index_favs_on_university_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "name"
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(version: 20151222214931) do
 
   create_table "pictures", force: :cascade do |t|
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "residence_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151222214931) do
 
   create_table "residences", force: :cascade do |t|
     t.string   "name"
+    t.string   "address",                     null: false
     t.decimal  "price",         precision: 7, null: false
     t.integer  "square_meters"
     t.text     "description"
@@ -119,6 +121,6 @@ ActiveRecord::Schema.define(version: 20151222214931) do
     t.datetime "updated_at",    null: false
   end
 
+  add_foreign_key "favs", "residences"
   add_foreign_key "favs", "students"
-  add_foreign_key "favs", "universities"
 end

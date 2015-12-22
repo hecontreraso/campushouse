@@ -10,4 +10,11 @@
 #
 
 class University < ActiveRecord::Base
+	has_many :students, inverse_of: :university
+
+	has_many :university_residences
+	has_many :residences, through: :university_residences
+
+  validates :name, length: { maximum: 64 }
+  validates :address, presence: true, length: { maximum: 200 }
 end
