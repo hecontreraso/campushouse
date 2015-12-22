@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'haml-rails'
 
+# Login with facebook
+gem 'omniauth-facebook'
+
 # Error detection in production
 gem 'airbrake'
 # Full-fledged user authentication system
