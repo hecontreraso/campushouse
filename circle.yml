@@ -1,5 +1,9 @@
 deployment:
-  staging:
+  production:
     branch: master
     heroku:
       appname: campushouse
+  staging:
+    branch: develop
+    heroku:
+      appname: campushouse-staging
