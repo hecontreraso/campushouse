@@ -6,4 +6,4 @@ deployment:
   staging:
     branch: develop
     heroku:
-      appname: campushouse-staging
+      appname: campushouse-qa
