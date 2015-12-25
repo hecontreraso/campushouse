@@ -1,3 +1,147 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#home {
+	.subscribe-input {
+	  width: 65%;
+	  text-align: left;
+	  margin-right: 2px;
+	}
+
+	/*Buttons Configuration */
+
+	.btn-conf {
+	  border-top-right-radius: 25px !important;
+	  border-bottom-right-radius: 25px !important;
+	  margin-right: 15px;
+	  font-size: 11px;
+	  letter-spacing: 1px;
+	}
+
+	.btn-conf-2 {
+	  border-radius: 50px;
+	  margin-right: 15px;
+	  font-size: 11px;
+	  letter-spacing: 1px;
+	  text-transform: uppercase;
+	  padding: 12px 28px 11px 28px;
+	  margin-top: 20px;
+	}
+
+	.btn-green {
+	  background: #03C9A9;
+	  color: white;
+	}
+
+	/* HEADER SECTION */
+
+	header {
+	  position: relative;
+	  background: image-url("header.jpg") no-repeat center top;
+	  padding-top: 180px;
+	  text-align: center;
+	  background-attachment: relative;
+	  background-position: center center;
+	  min-height: 600px;
+	  width: 100%;
+	  color: white;
+	  background-size: 100%;
+	  background-size: cover;
+	  .hero-form {
+	    margin: auto;
+	    width: 60%;  
+	  }
+	  @media screen and (max-width: 767px) {
+	    .hero-form {
+	      width: 100%;
+	    }
+	  }
+	  .overlay {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.5);
+	  }
+	  .logo {
+	    top: 30px;
+	    left: 45px;
+	    font-size: 18px;
+	    font-weight: 900;
+	    position: absolute;
+	  }
+	  .social {
+	    top: 30px;
+	    right: 45px;
+	    font-size: 20px;
+	    position: absolute;
+	    i {
+	      margin-left: 20px;
+	    }
+	    a {
+	      color: white;
+	    }
+	  }
+	  h1 {
+	    font-weight: 700;
+	    color: white;
+	    font-size: 40px;
+	  }
+	}
+
+	/* GREY DIV */
+	#grey {
+	  padding-top: 30px;
+	  padding-bottom: 50px;
+	  color: black;
+	  article {
+	    padding-bottom: 20px;
+	    img {
+	      opacity: 0.7;
+	      transition: all .2s ease-in-out;
+	      &:hover {
+	        opacity: 1;
+	      }
+	    }
+	    h2 {
+	      position: absolute;
+	      top: 29%;
+	      left: 0;
+	      width: 100%;
+	      text-align: center;
+	      color: white;
+	      text-shadow: 2px 2px black;
+	      font-weight: 700;
+	      font-size: 35px;
+	      &:hover {
+	        cursor: pointer;
+	      }
+	    }
+	  }
+	}
+
+	/* Grey Section */
+	footer {
+	  padding-top: 50px;
+	  padding-bottom: 50px;
+	  background: lightgreen;
+	  padding-bottom: 80px;
+	  padding-top: 80px;
+	  color: black;
+	  a {
+	    color: black !important;
+	  }
+	  i {
+	    font-size: 40px;
+	  }
+	  h5 {
+	    text-transform: uppercase;
+	    font-weight: 500;
+	  }
+	  hr {
+	    border-top: 1px solid gray;
+	  }
+	}
+}
