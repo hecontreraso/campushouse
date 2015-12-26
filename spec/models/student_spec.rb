@@ -28,6 +28,7 @@ RSpec.describe Student, type: :model do
     it { should have_many(:favs) }
     it { should have_many(:residences).through(:favs) }
     
+    it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_most(32) }
     it do
     	should validate_numericality_of(:semester)

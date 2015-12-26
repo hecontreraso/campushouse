@@ -8,4 +8,21 @@
 		= csrf_meta_tags
 		= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
 	%body
+		%nav.navbar.navbar-default{:role => "navigation"}
+			.container-fluid
+				.navbar-header
+					%a.navbar-brand{:href => "#"} CAMPUS HOUSE
+				.collapse.navbar-collapse
+					%ul.nav.navbar-nav.navbar-right
+						- if user_signed_in?
+							= render('layouts/student_navbar')
+						- else
+							%li.bordered-item
+								%div
+									= link_to "Publica con nosotros", '#'
+							%li
+								= link_to "Regístrate", '#'
+							%li
+								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignIn'
 		= yield
+	= render('students/sessions/new')

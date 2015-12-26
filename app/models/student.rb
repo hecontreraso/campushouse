@@ -32,7 +32,7 @@ class Student < ActiveRecord::Base
   has_many :favs
   has_many :residences, through: :favs
 
-  validates :name, length: { maximum: 32 }
+  validates :name, length: { maximum: 32 }, presence: true
   validates :semester, numericality: {
   	greater_than_or_equal_to: 1,
   	less_than_or_equal_to: 12

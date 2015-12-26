@@ -1,0 +1,9 @@
+%li
+	= link_to "Favorites", '#'
+%li.dropdown
+	%a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-haspopup' => 'true', 'aria-expanded' => "false"}
+		Esteban
+		%span.caret
+	%ul.dropdown-menu
+		%li
+			= link_to "Cerrar sesión", destroy_student_session_path, method: :delete

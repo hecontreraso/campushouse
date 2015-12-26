@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :owners
-  devise_for :students
   root 'pages#home'
+
+  devise_for :owners
+  devise_for :students, controllers: {
+    registrations: 'students/registrations',
+    sessions: 'students/sessions'
+  }
 
   get 'residences' => 'residences#index'
 

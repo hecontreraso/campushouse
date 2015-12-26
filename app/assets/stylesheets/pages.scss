@@ -9,31 +9,6 @@
 	  margin-right: 2px;
 	}
 
-	/*Buttons Configuration */
-
-	.btn-conf {
-	  border-top-right-radius: 25px !important;
-	  border-bottom-right-radius: 25px !important;
-	  margin-right: 15px;
-	  font-size: 11px;
-	  letter-spacing: 1px;
-	}
-
-	.btn-conf-2 {
-	  border-radius: 50px;
-	  margin-right: 15px;
-	  font-size: 11px;
-	  letter-spacing: 1px;
-	  text-transform: uppercase;
-	  padding: 12px 28px 11px 28px;
-	  margin-top: 20px;
-	}
-
-	.btn-green {
-	  background: #03C9A9;
-	  color: white;
-	}
-
 	/* HEADER SECTION */
 
 	header {
@@ -50,7 +25,18 @@
 	  background-size: cover;
 	  .hero-form {
 	    margin: auto;
-	    width: 60%;  
+	    width: 60%;
+	    input {
+		    border-top-left-radius: 25px !important;
+		    border-bottom-left-radius: 25px !important;
+	    }
+    	button {
+			  border-top-right-radius: 25px !important;
+			  border-bottom-right-radius: 25px !important;
+			  margin-right: 15px;
+			  font-size: 11px;
+			  letter-spacing: 1px;
+			}
 	  }
 	  @media screen and (max-width: 767px) {
 	    .hero-form {
