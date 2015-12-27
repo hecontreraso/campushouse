@@ -1,8 +1,18 @@
 #residences.container-fluid.fill
 	.row.fill
 		.col-md-7
+			%br	
 			%section.filters
+			.col-lg-2.col-md-12
+				.form-group
+					Rango de precios
+			.col-lg-10.col-md-12
+				#price
 			%section.residences
 				%article
 		.col-md-5.fill.nopadding
 			%section#map
+
+= javascript_include_tag 'https://maps.googleapis.com/maps/api/js'
+= stylesheet_link_tag 'freshstyle'
+= javascript_include_tag 'freshslider.1.0.0'
