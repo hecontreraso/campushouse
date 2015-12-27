@@ -6,12 +6,19 @@
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
+		= javascript_include_tag 'https://maps.googleapis.com/maps/api/js'
 		= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
 	%body
 		%nav.navbar.navbar-default{:role => "navigation"}
 			.container-fluid
 				.navbar-header
-					%a.navbar-brand{:href => "#"} CAMPUS HOUSE
+					%a.navbar-brand{:href => root_path} CAMPUS HOUSE
+					- if "#{controller_name}-#{action_name}" != 'pages-home'
+						%form.navbar-form.navbar-left{:role => "search"}
+							.input-group
+								%span.input-group-addon
+									%i.fa.fa-search
+								%input.form-control{:placeholder => "¿Dónde estás buscando?", :type => "text"}
 				.collapse.navbar-collapse
 					%ul.nav.navbar-nav.navbar-right
 						- if user_signed_in?
