@@ -23,10 +23,10 @@ $(document).ready ->
 
   $('#price').freshslider
     range: true
-    step: 1
+    step: 1000
     text: true
-    min: 0
-    max: 100
+    min: 100000
+    max: 5000000
     enabled: true
     value: 10
     onchange: (low, high) ->

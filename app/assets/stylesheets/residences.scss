@@ -9,6 +9,39 @@ nav {
 #residences {
   min-height: calc(100% - 52px);
   height: calc(100% - 52px);
+  .residences {
+    background: rgba(211, 211, 211, 0.20);
+    padding-top: 50px;
+  	img {
+  		width: 100%;
+  	}
+  	.description-wrapper {
+	    padding: 10px;
+	    .text-description-wrapper {
+	    	float: left;
+		    font-size: 18px;
+		  	.residence-title {
+		  		font-weight: bold;
+		  	}
+		  	.private-room {
+			    color: rgba(85,85,85,0.50);
+		  	}
+	    }
+	    .favorite-price-wrapper {
+		  	padding-top: 5px;
+	    	float: right;
+	    	.fa-heart{
+			    color: lightgray;
+			    &:hover {
+			    	color: rgba(255, 0, 35, 0.67);
+			    }
+	    	}
+	    	.price {
+	    		font-size: 24px;
+	    	}
+	    }
+  	}
+  }
   #map {
     width: 100%;
     min-height: 100%;
