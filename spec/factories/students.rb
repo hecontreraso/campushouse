@@ -21,8 +21,15 @@
 #
 
 FactoryGirl.define do
+	sequence(:email) { |n| "user#{n}@example.com" }
+
   factory :student do
-    
+    name 'Lorem Smith'
+    university
+    semester 1
+    email
+    password '12345678'
+    password_confirmation '12345678'
   end
 
 end

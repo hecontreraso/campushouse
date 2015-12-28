@@ -11,7 +11,8 @@
 
 FactoryGirl.define do
   factory :university do
-    
+    name 'Test university'
+    address 'Carrera 45 con calle 26'
   end
 
 end
