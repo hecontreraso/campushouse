@@ -1,4 +1,4 @@
-class Students::SessionsController < Devise::SessionsController
+class Owners::SessionsController < Devise::SessionsController
   include Redirectable
 # before_filter :configure_sign_in_params, only: [:create]
 
@@ -11,12 +11,6 @@ class Students::SessionsController < Devise::SessionsController
   def create
     create_and_redirect_to_referer
   end
-
-  # def failure
-  #   return render :json => {:success => false, :errors => ["Login failed."]}
-  # end
-
-
   # DELETE /resource/sign_out
   # def destroy
   #   super

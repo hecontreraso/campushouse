@@ -3,25 +3,25 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4 Ingresar
+        %h4 Ingreso de propietarios
       .modal-body
-        = form_for(Student.new, as: :student,
-          url: session_path(:student), html: {role: 'form'}) do |f|
+        = form_for(Owner.new, as: :owner,
+          url: session_path(:owner), html: {role: 'form'}) do |f|
           .form-group
             = f.email_field :email, class: 'form-control', placeholder: 'Correo electrónico', autofocus: true
           .form-group
             = f.password_field :password, class: 'form-control', placeholder: 'Contraseña', autocomplete: "off"
-          - if student_devise_mapping.rememberable?
+          - if owner_devise_mapping.rememberable?
             .checkbox
               %label
                 = f.check_box :remember_me
                 Recordarme
-          - if student_devise_mapping.recoverable?
+          - if owner_devise_mapping.recoverable?
             .checkbox.alignright
-              = link_to "¿Has olvidado tu contraseña?", new_password_path(:student)
+              = link_to "¿Has olvidado tu contraseña?", new_password_path(:owner)
           = f.submit "Iniciar sesión", class: 'btn btn-conf-2 btn-green btn-block'
       .modal-footer
-        - if student_devise_mapping.registerable?
+        - if owner_devise_mapping.registerable?
           ¿No tienes una cuenta?
-          = link_to "Regístrate", new_registration_path(:student)
+          = link_to "Regístrate", new_registration_path(:owner)
           %br/

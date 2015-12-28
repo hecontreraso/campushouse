@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  devise_for :owners
+  devise_for :owners, controllers: {
+    sessions: 'owners/sessions'
+  }
   devise_for :students, controllers: {
     registrations: 'students/registrations',
     sessions: 'students/sessions'
   }
 
   get 'residences' => 'residences#index'
+  get 'owners' => 'owners#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

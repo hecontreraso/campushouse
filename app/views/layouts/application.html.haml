@@ -29,6 +29,7 @@
 							%li
 								= link_to "Regístrate", '#'
 							%li
-								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignIn'
+								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#StudentSignIn'
 		= yield
-	= render('students/sessions/new')
+	= render partial: 'devise/sessions/new', locals: { resource: 'student' }
+	= render partial: 'devise/sessions/new', locals: { resource: 'owner' }
