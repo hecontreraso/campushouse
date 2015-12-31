@@ -1,0 +1,28 @@
+#Register.modal.fade{role: "dialog"}
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-body
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %br
+        %br
+        = form_for(resource, as: :user, url: registration_path(:user)) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.email_field :email, class: 'form-control', placeholder: 'Correo electrónico', autofocus: true
+          .form-group
+            = f.text_field :name, class: 'form-control', placeholder: 'Nombre'
+          .form-group
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+              %br/
+            = f.password_field :password, class: 'form-control', placeholder: 'Contraseña', autocomplete: "off"
+          .form-group
+            = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirma tu contraseña', autocomplete: "off"
+          = f.submit "Registrarse", class: 'btn btn-conf-2 btn-green btn-block'
+      .modal-footer
+        - if devise_mapping.registerable?
+          ¿Ya tienes una cuenta?
+          = link_to "Inicia sesión", new_registration_path(:user)
+          %br/
+

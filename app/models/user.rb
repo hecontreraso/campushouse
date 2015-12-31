@@ -18,6 +18,11 @@
 #  last_sign_in_ip        :inet
 #
 
-class Owner < User
-  has_many :residences
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  validates :name, length: { maximum: 32 }
 end

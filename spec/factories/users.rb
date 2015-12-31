@@ -18,6 +18,9 @@
 #  last_sign_in_ip        :inet
 #
 
-class Owner < User
-  has_many :residences
+FactoryGirl.define do
+  factory :user do
+    
+  end
+
 end

@@ -1,0 +1,7 @@
+#pages
+	%h2
+		Aqui debe ponerse lo mismo que aquí: http://campuscribz.com/listwithus
+	- if user_signed_in?
+		= link_to 'Publica tu residencia', listings_path, class: 'btn btn-conf-2 btn-green'
+	- else
+		= link_to 'Publica tu residencia', listings_path, class: 'btn btn-conf-2 btn-green'

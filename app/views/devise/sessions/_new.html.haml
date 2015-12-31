@@ -1,28 +1,27 @@
-%div{id: "#{resource.titleize}SignIn", class: 'modal fade', role: "dialog"}
+#SignIn.modal.fade{role: "dialog"}
   .modal-dialog.modal-sm
     .modal-content
-      .modal-header
-        %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        
-        %h4 Ingresa como propietario
       .modal-body
-        = form_for(Owner.new, as: :owner,
-          url: session_path(:owner), html: {role: 'form'}) do |f|
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %br
+        %br
+        = form_for(User.new, as: :user,
+          url: session_path(:user), html: {role: 'form'}) do |f|
           .form-group
             = f.email_field :email, class: 'form-control', placeholder: 'Correo electrónico', autofocus: true
           .form-group
             = f.password_field :password, class: 'form-control', placeholder: 'Contraseña', autocomplete: "off"
-          - if owner_devise_mapping.rememberable?
+          - if devise_mapping.rememberable?
             .checkbox
               %label
                 = f.check_box :remember_me
                 Recordarme
-          - if owner_devise_mapping.recoverable?
+          - if devise_mapping.recoverable?
             .checkbox.alignright
-              = link_to "¿Has olvidado tu contraseña?", new_password_path(:owner)
+              = link_to "¿Has olvidado tu contraseña?", new_password_path(:user)
           = f.submit "Iniciar sesión", class: 'btn btn-conf-2 btn-green btn-block'
       .modal-footer
-        - if owner_devise_mapping.registerable?
+        - if devise_mapping.registerable?
           ¿No tienes una cuenta?
-          = link_to "Regístrate", new_registration_path(:owner)
+          = link_to "Regístrate", new_registration_path(:user)
           %br/

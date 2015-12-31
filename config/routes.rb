@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
   root 'pages#home'
-
-  devise_for :owners, controllers: {
-    sessions: 'owners/sessions'
-  }
-  devise_for :students, controllers: {
-    registrations: 'students/registrations',
-    sessions: 'students/sessions'
-  }
-
+  get 'listwithus' => 'pages#list_with_us'
   get 'residences' => 'residences#index'
-  get 'owners' => 'owners#index'
 
+  resources :listings
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

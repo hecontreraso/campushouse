@@ -4,6 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  name          :string
+#  address       :string           not null
 #  price         :decimal(7, )     not null
 #  square_meters :integer
 #  description   :text

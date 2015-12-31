@@ -20,16 +20,19 @@
 								%input.form-control{:placeholder => "¿Dónde estás buscando?", :type => "text"}
 				.collapse.navbar-collapse
 					%ul.nav.navbar-nav.navbar-right
+						- if controller_name == 'pages' && !current_user.try(:owner?)
+							%li.bordered-item
+								%div
+									= link_to "Publica con nosotros", listwithus_path
 						- if user_signed_in?
 							= render('layouts/student_navbar')
 						- else
-							%li.bordered-item
-								%div
-									= link_to "Publica con nosotros", '#'
 							%li
-								= link_to "Regístrate", '#'
+								= link_to "Regístrate", '#', 'data-toggle' => "modal", 'data-target' => '#Register'
 							%li
-								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#StudentSignIn'
+								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignIn'
+		%p.notice= notice
+		%p.alert= alert
 		= yield
-	= render partial: 'devise/sessions/new', locals: { resource: 'student' }
-	= render partial: 'devise/sessions/new', locals: { resource: 'owner' }
+	= render 'devise/sessions/new'
+	= render 'devise/registrations/new'

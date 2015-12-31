@@ -1,11 +1,9 @@
 # == Schema Information
 #
-# Table name: students
+# Table name: users
 #
 #  id                     :integer          not null, primary key
 #  name                   :string           not null
-#  university_id          :integer
-#  semester               :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null

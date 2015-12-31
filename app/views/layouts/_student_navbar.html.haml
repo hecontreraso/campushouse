@@ -1,12 +1,12 @@
-%li.bordered-item
-	%div
-		= link_to "Publica con nosotros", '#'
+- if current_user.owner?
+	%li
+		= link_to "Residencias publicadas", '#'
 %li
-	= link_to "Favorites", '#'
+	= link_to "Tus favoritos ❤", '#'
 %li.dropdown
 	%a{href: "#", class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-haspopup' => 'true', 'aria-expanded' => "false"}
-		Esteban
+		= current_user.name
 		%span.caret
 	%ul.dropdown-menu
 		%li
-			= link_to "Cerrar sesión", destroy_student_session_path, method: :delete
+			= link_to "Cerrar sesión", destroy_user_session_path, method: :delete

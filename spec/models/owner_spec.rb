@@ -1,10 +1,9 @@
 # == Schema Information
 #
-# Table name: owners
+# Table name: users
 #
 #  id                     :integer          not null, primary key
 #  name                   :string           not null
-#  avatar                 :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
