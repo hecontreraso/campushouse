@@ -20,3 +20,6 @@
 
 # Ignore dotenv secrets file
 .env
+
+# Ignore byebug history
+.byebug_history
