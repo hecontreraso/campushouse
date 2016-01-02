@@ -23,6 +23,6 @@
       .modal-footer
         - if devise_mapping.registerable?
           ¿Ya tienes una cuenta?
-          = link_to "Inicia sesión", new_registration_path(:user)
+          = link_to "Inicia sesión", '#', class: 'change-modal'
           %br/
 

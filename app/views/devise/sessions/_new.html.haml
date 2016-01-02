@@ -23,5 +23,5 @@
       .modal-footer
         - if devise_mapping.registerable?
           ¿No tienes una cuenta?
-          = link_to "Regístrate", new_registration_path(:user)
+          = link_to "Regístrate", '#', class: 'change-modal'
           %br/
