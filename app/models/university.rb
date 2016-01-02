@@ -10,7 +10,7 @@
 #
 
 class University < ActiveRecord::Base
-	has_many :students, inverse_of: :university
+	has_many :students, inverse_of: :university, class_name: 'User'
 
 	has_many :university_residences
 	has_many :residences, through: :university_residences

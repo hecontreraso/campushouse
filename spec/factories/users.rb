@@ -4,6 +4,10 @@
 #
 #  id                     :integer          not null, primary key
 #  name                   :string           not null
+#  owner_enabled          :boolean          default(FALSE)
+#  university_id          :integer
+#  semester               :integer
+#  avatar                 :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
@@ -19,8 +23,24 @@
 #
 
 FactoryGirl.define do
+	sequence :email do |n|
+		"email#{n}@factory.com"
+  end
+
   factory :user do
-    
+		name 'Lorem Smith'
+		email
+		password '12345678'
+		password_confirmation '12345678'
+
+		trait :student do
+			university
+			semester 1.to_i
+		end
+
+		trait :owner do
+			owner_enabled true
+		end
   end
 
 end

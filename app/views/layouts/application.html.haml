@@ -20,7 +20,7 @@
 								%input.form-control{:placeholder => "¿Dónde estás buscando?", :type => "text"}
 				.collapse.navbar-collapse
 					%ul.nav.navbar-nav.navbar-right
-						- if controller_name == 'pages' && !current_user.try(:owner?)
+						- if controller_name == 'pages' && !current_user.try(:owner_enabled?)
 							%li.bordered-item
 								%div
 									= link_to "Publica con nosotros", listwithus_path

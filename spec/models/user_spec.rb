@@ -4,6 +4,10 @@
 #
 #  id                     :integer          not null, primary key
 #  name                   :string           not null
+#  owner_enabled          :boolean          default(FALSE)
+#  university_id          :integer
+#  semester               :integer
+#  avatar                 :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
@@ -21,5 +25,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	context 'validations' do
+		it { should have_many(:published_residences) }
+		it { should belong_to :university }
+		it { should have_many(:favs) }
+		it { should have_many(:faved_residences).through(:favs) }
+
+		it { should validate_length_of(:name).is_at_most(32) }
+		it { should validate_presence_of(:name) }    
+		it do
+			should validate_numericality_of(:semester)
+				.is_greater_than_or_equal_to(1)
+				.is_less_than_or_equal_to(12)
+		end
+	end
 end

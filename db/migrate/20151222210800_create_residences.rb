@@ -7,7 +7,7 @@ class CreateResidences < ActiveRecord::Migration
     	t.integer :square_meters
       t.text :description    	
     	t.integer :rooms
-    	t.references :owner
+    	t.references :user
       t.timestamps null: false
     end
   end

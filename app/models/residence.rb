@@ -9,13 +9,13 @@
 #  square_meters :integer
 #  description   :text
 #  rooms         :integer
-#  owner_id      :integer
+#  user_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 
 class Residence < ActiveRecord::Base
-	belongs_to :owner
+	belongs_to :user
 	has_many :pictures
 	has_many :ratings
 
@@ -27,9 +27,9 @@ class Residence < ActiveRecord::Base
 	has_many :residence_features
 	has_many :features, through: :residence_features
 
-	# Students which faved this residence
+	# Students who faved this residence
 	has_many :favs
-	has_many :students, through: :favs
+	has_many :students_who_faved, through: :favs, class_name: 'User'
 
   validates :name, length: { maximum: 32 }
   validates :price, numericality: {
