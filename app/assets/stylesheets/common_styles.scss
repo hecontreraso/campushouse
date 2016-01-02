@@ -68,6 +68,17 @@ a {
   margin: 0px;
 }
 
+// ALERTS
+
+.alert {
+  padding: 12px;
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  z-index: 99;
+  transform: translateX(-50%);
+}
+
 /* BUTTONS CONFIGURATION */
 
 .btn-green {

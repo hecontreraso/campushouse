@@ -8,6 +8,11 @@
 		= csrf_meta_tags
 		= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
 	%body
+		.alert-wrap
+			- if notice
+				= render partial: "layouts/alert", locals: {status: "success", notice: notice}
+			- if alert
+				= render partial: "layouts/alert", locals: {status: "warning", notice: alert}
 		%nav.navbar.navbar-default{:role => "navigation"}
 			.container-fluid
 				.navbar-header
@@ -31,8 +36,6 @@
 								= link_to "Regístrate", '#', 'data-toggle' => "modal", 'data-target' => '#Register'
 							%li
 								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignIn'
-		%p.notice= notice
-		%p.alert= alert
 		= yield
 	= render 'devise/sessions/new'
 	= render 'devise/registrations/new'
