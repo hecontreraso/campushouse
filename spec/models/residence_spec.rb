@@ -28,10 +28,13 @@ RSpec.describe Residence, type: :model do
 		it { should have_many(:favs) }
 		it { should have_many(:students_who_faved).through(:favs) }
 
+		it { should validate_presence_of(:name) }
 		it { should validate_length_of(:name).is_at_most(32) }
-		it { should validate_length_of(:description).is_at_most(1000) }
 		it { should validate_presence_of(:address) }
 		it { should validate_length_of(:address).is_at_most(64) }
+		it { should validate_length_of(:description).is_at_most(1000) }
+		
+		it { should validate_presence_of(:price) }
 		it do
 			should validate_numericality_of(:price)
 				.is_greater_than_or_equal_to(100_000)
@@ -39,7 +42,7 @@ RSpec.describe Residence, type: :model do
 		end
 		it do
 			should validate_numericality_of(:square_meters)
-				.is_greater_than_or_equal_to(5)
+				.is_greater_than_or_equal_to(1)
 				.is_less_than_or_equal_to(300)
 		end
 		it do

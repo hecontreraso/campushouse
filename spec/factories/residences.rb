@@ -1,13 +1,12 @@
 FactoryGirl.define do
   factory :residence do
-    name "MyString"
-address "MyString"
-price ""
-price ""
-square_meters 1
-description "MyText"
-rooms 1
-user nil
+    name "Name"
+		address "Address"
+		price 450_000
+		square_meters 10
+		description "MyText"
+		rooms 2
+		user
   end
 
 end

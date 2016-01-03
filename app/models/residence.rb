@@ -31,21 +31,21 @@ class Residence < ActiveRecord::Base
 	has_many :favs
 	has_many :students_who_faved, through: :favs, class_name: 'User'
 
-  validates :name, length: { maximum: 32 }
+  validates :name, length: { maximum: 32 }, presence: true
+  validates :address, length: { maximum: 64 }, presence: true
   validates :price, numericality: {
-  	greater_than_or_equal_to: 100_000,
-  	less_than_or_equal_to: 5_000_000
-  }
+    greater_than_or_equal_to: 100_000,
+    less_than_or_equal_to: 5_000_000
+  }, presence: true
   validates :square_meters, numericality: {
-  	greater_than_or_equal_to: 5,
-  	less_than_or_equal_to: 300
-  }
-  validates :description, length: { maximum: 1000 }
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 300
+  }, allow_nil: true
+  validates :description, length: { maximum: 1000 }, presence: true
   validates :rooms, numericality: {
-  	greater_than_or_equal_to: 1,
-  	less_than_or_equal_to: 100
-  }
-  validates :address, presence: true, length: { maximum: 64 }
+    greater_than_or_equal_to: 1,
+    less_than_or_equal_to: 100
+  }, allow_nil: true
 
   mount_uploaders :pictures, ResidenceImagesUploader
 end

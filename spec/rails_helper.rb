@@ -20,7 +20,10 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join('spec/support/devise.rb')].each { |f| require f }
+# Dir[Rails.root.join('spec/support/devise.rb')].each { |f| require f }
+require 'support/devise.rb'
+require 'support/factory_girl.rb'
+require 'support/database_cleaner.rb'
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

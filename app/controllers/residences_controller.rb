@@ -28,7 +28,7 @@ class ResidencesController < ApplicationController
   # POST /residences.json
   def create
     @residence = Residence.new(residence_params)
-    @residence.user = current_user.__getobj__
+    @residence.user = current_user
 
     respond_to do |format|
       if @residence.save
@@ -73,10 +73,10 @@ class ResidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def residence_params
-      params.require(:residence).permit(:name, :address, :price, :price, :square_meters, :description, :rooms)
+      params.require(:residence).permit(:name, :address, :price, :square_meters, :description, :rooms)
     end
 
     def verify_residence_ownership
-      redirect_to residences_path unless current_user.published_residences.include?(@residence)
+      redirect_to residences_path unless @residence.user == current_user
     end
 end
