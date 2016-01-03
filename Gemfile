@@ -21,6 +21,9 @@ gem 'haml-rails'
 # Login with facebook
 gem 'omniauth-facebook'
 
+# Image uploading
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
 # Error detection in production
 gem 'airbrake'
 # Full-fledged user authentication system

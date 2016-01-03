@@ -19,7 +19,7 @@ class Residence < ActiveRecord::Base
 	has_many :pictures
 	has_many :ratings
 
-	# Universities close to this residence
+	# Universitises close to this residence
 	has_many :university_residences
 	has_many :universities, through: :university_residences
 
@@ -46,4 +46,6 @@ class Residence < ActiveRecord::Base
   	less_than_or_equal_to: 100
   }
   validates :address, presence: true, length: { maximum: 64 }
+
+  mount_uploaders :pictures, ResidenceImagesUploader
 end

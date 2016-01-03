@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20151222214931) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "residences", ["user_id"], name: "index_residences_on_user_id", using: :btree
+
   create_table "universities", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "address",    null: false
@@ -105,4 +107,5 @@ ActiveRecord::Schema.define(version: 20151222214931) do
 
   add_foreign_key "favs", "residences"
   add_foreign_key "favs", "users"
+  add_foreign_key "residences", "users"
 end

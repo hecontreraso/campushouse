@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: c745a3663d5ee74f68fc52f401a3b0c492690f2f
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+
+GIT
   remote: git://github.com/thoughtbot/shoulda-matchers.git
   revision: 6d475284594d28b2f9456f2b396f31aa741d1aef
   specs:
@@ -318,6 +328,7 @@ DEPENDENCIES
   annotate
   byebug
   capybara
+  carrierwave!
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise

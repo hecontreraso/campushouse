@@ -1,63 +1,62 @@
-#home
-	%header
-		.overlay
-		.social.hidden-xs
-			%a{:href => "#"}
-				%i.ion-social-twitter
-			%a{:href => "#"}
-				%i.ion-social-instagram
-			%a{:href => "#"}
-				%i.ion-social-facebook
-		.container
-			.row
-				.col-md-8.col-md-offset-2.centered
-					%h1 Encuentra cupos universitarios de calidad
-					%h3
-						Seleccionamos los mejores
-						%br>/
-						para que tu no tengas que hacerlo
-					%br/
-					.input-group.hero-form
-						%input.form-control{:placeholder => "Busca por universidad", :type => "text"}/
-						%span.input-group-btn
-							%button.btn.btn-conf.btn-green.form-control{:type => "button"} BUSCAR
+%header
+	.overlay
+	.social.hidden-xs
+		%a{:href => "#"}
+			%i.ion-social-twitter
+		%a{:href => "#"}
+			%i.ion-social-instagram
+		%a{:href => "#"}
+			%i.ion-social-facebook
+	.container
+		.row
+			.col-md-8.col-md-offset-2.centered
+				%h1 Encuentra cupos universitarios de calidad
+				%h3
+					Seleccionamos los mejores
+					%br>/
+					para que tu no tengas que hacerlo
+				%br/
+				.input-group.hero-form
+					%input.form-control{:placeholder => "Busca por universidad", :type => "text"}/
+					%span.input-group-btn
+						%button.btn.btn-conf.btn-green.form-control{:type => "button"} BUSCAR
 
-	/ ********** GREY SECTION - BLOG **********
-	%section#grey
-		.container
-			.row
-				.col-sm-12.text-center
-					%h2 Encuentra tu universidad
-					%br/
-			.row
-				%article.col-sm-6.col-md-4
-					%a{:href => "#"}
-						=image_tag "nacional.jpg", class: "img-responsive aligncenter"
-						%h2 Nacional
-				%article.col-sm-6.col-md-4
-					%a{:href => "#"}
-						=image_tag "javeriana.jpg", class: "img-responsive aligncenter"
-						%h2 Javeriana
-				%article.col-sm-6.col-md-4
-					%a{:href => "#"}
-						=image_tag "andes.jpg", class: "img-responsive aligncenter"
-						%h2 Andes
+/ ********** GREY SECTION - BLOG **********
+%section#grey
+	.container
+		.row
+			.col-sm-12.text-center
+				%h2 Encuentra tu universidad
+				%br/
+		.row
+			%article.col-sm-6.col-md-4
+				%a{:href => "#"}
+					=image_tag "nacional.jpg", class: "img-responsive aligncenter"
+					%h2 Nacional
+			%article.col-sm-6.col-md-4
+				%a{:href => "#"}
+					=image_tag "javeriana.jpg", class: "img-responsive aligncenter"
+					%h2 Javeriana
+			%article.col-sm-6.col-md-4
+				%a{:href => "#"}
+					=image_tag "andes.jpg", class: "img-responsive aligncenter"
+					%h2 Andes
 
-	/ ********** GREY SECTION **********
-	%footer
-		.container
-			.row
-				.col-xs-12.col-md-offset-2.col-md-4
-					%h5 Hecho con amor ❤
-					%hr/
-					%p
-						Por estudiantes de la universidad de los Andes y Nacional.
-						%br>/
-						Tienes sugerencias? Nos gustaría saber de ti!
-				.col-xs-12.col-md-offset-1.col-md-4
-					%h5 Síguenos en las redes
-					%hr/
-					%p (Por ahora solo tenemos facebook)
-					%p
-						%a{:href => "www.facebook.com/campushouse"}
-							%i.fa.fa-facebook-official.fa-2x
+/ ********** GREY SECTION **********
+%footer
+	.container
+		.row
+			.col-xs-12.col-md-offset-2.col-md-4
+				%h5 Hecho con amor ❤
+				%hr/
+				%p
+					Por estudiantes de la universidad de los Andes y Nacional.
+					%br>/
+					Tienes sugerencias? Nos gustaría saber de ti!
+			.col-xs-12.col-md-offset-1.col-md-4
+				%h5 Síguenos en las redes
+				%hr/
+				%p (Por ahora solo tenemos facebook)
+				%p
+					%a{:href => "www.facebook.com/campushouse"}
+						%i.fa.fa-facebook-official.fa-2x

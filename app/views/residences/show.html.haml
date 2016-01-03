@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @residence.name
+%p
+  %b Address:
+  = @residence.address
+%p
+  %b Price:
+  = @residence.price
+%p
+  %b Price:
+  = @residence.price
+%p
+  %b Square meters:
+  = @residence.square_meters
+%p
+  %b Description:
+  = @residence.description
+%p
+  %b Rooms:
+  = @residence.rooms
+%p
+  %b User:
+  = @residence.user
+
+= link_to 'Edit', edit_residence_path(@residence)
+\|
+= link_to 'Back', residences_path

@@ -7,7 +7,7 @@
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
 		= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
-	%body
+	%body{:class => "#{controller_name} #{action_name}"}
 		.alert-wrap
 			- if notice
 				= render partial: "layouts/alert", locals: {status: "success", notice: notice}
