@@ -4,12 +4,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  root 'pages#home'
   get 'listwithus' => 'pages#list_with_us'
-  get 'residences' => 'residences#index'
-
-  resources :listings
+  get 's' => 'search#index'
   
+  root 'pages#home'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
