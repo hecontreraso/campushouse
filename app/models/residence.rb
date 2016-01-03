@@ -15,7 +15,7 @@
 #
 
 class Residence < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :user, inverse_of: :published_residences
 	has_many :pictures
 	has_many :ratings
 

@@ -1,11 +1,13 @@
 class ResidencesController < ApplicationController
-  before_action :authenticate_and_redirect
+  before_action :authenticate_user!
   before_action :set_residence, only: [:show, :edit, :update, :destroy]
+  before_action :verify_residence_ownership, only: [:show, :edit, :update, :destroy]
 
   # GET /residences
   # GET /residences.json
   def index
-    @residences = Residence.all
+    current_user.update(owner_enabled: true)
+    @residences = current_user.published_residences
   end
 
   # GET /residences/1
@@ -26,6 +28,7 @@ class ResidencesController < ApplicationController
   # POST /residences.json
   def create
     @residence = Residence.new(residence_params)
+    @residence.user = current_user.__getobj__
 
     respond_to do |format|
       if @residence.save
@@ -70,10 +73,10 @@ class ResidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def residence_params
-      params.require(:residence).permit(:name, :address, :price, :price, :square_meters, :description, :rooms, :user_id)
+      params.require(:residence).permit(:name, :address, :price, :price, :square_meters, :description, :rooms)
     end
 
-    def authenticate_and_redirect
-      authenticate_user!
+    def verify_residence_ownership
+      redirect_to residences_path unless current_user.published_residences.include?(@residence)
     end
 end
