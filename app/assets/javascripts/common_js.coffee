@@ -1,4 +1,4 @@
-$(document).ready ->
+initialize = ->
 	# Show the flash messages for 3 seconds then hide it
 	$('.alert').delay(3000).fadeOut(500)
 
@@ -11,3 +11,10 @@ $(document).ready ->
 		  $('#SignIn').modal 'hide'
 		  $('#Register').modal 'show'
 	  return
+
+	$('.loginModalShow').click ->
+	  $('#SignIn').modal 'show'
+	  return
+
+$(document).ready initialize
+$(document).on 'page:load', initialize
