@@ -1,11 +1,6 @@
-# This class overrides the redirection to /users/sign_in when user is not
-# logged in. Instead, redirects to root path and shows a flash message
+# Overwrites the devise redirection to /users/sign_in when auth fails
+# and redirects always to root_path
 class CustomFailure < Devise::FailureApp
-  def redirect_url
-     new_user_session_url(:subdomain => 'secure')
-  end
-
-  # You need to override respond to eliminate recall
   def redirect
     store_location!
     if is_flashing_format?

@@ -100,3 +100,16 @@ nav {
     }
   }
 }
+
+// ERRORS IN FORMS
+.field_with_errors {
+  small {
+    display: block;
+    color: red;
+  }
+}
+
+#error_explanation {
+  padding: 7px;
+  color: red;
+}

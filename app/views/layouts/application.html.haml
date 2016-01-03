@@ -33,9 +33,9 @@
 							= render('layouts/student_navbar')
 						- else
 							%li
-								= link_to "Regístrate", '#', 'data-toggle' => "modal", 'data-target' => '#Register'
+								= link_to "Regístrate", '#', 'data-toggle' => "modal", 'data-target' => '#RegisterModal'
 							%li
-								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignIn'
+								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignInModal'
 		= yield
 	= render 'devise/sessions/new'
 	= render 'devise/registrations/new'

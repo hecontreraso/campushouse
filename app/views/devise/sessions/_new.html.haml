@@ -1,12 +1,11 @@
-#SignIn.modal.fade{role: "dialog"}
+#SignInModal.modal.fade{role: "dialog"}
   .modal-dialog.modal-sm
     .modal-content
       .modal-body
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
         %br
         %br
-        = form_for(User.new, as: :user,
-          url: session_path(:user), html: {role: 'form'}) do |f|
+        = form_for(User.new, as: :user, url: session_path(:user), html: {id: 'SignInForm', 'data-type' => 'json', role: 'form'}, remote: true) do |f|
           .form-group
             = f.email_field :email, class: 'form-control', placeholder: 'Correo electrónico', autofocus: true
           .form-group
