@@ -2,12 +2,13 @@ class ResidencesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_residence, only: [:show, :edit, :update, :destroy]
   before_action :verify_residence_ownership, only: [:show, :edit, :update, :destroy]
+  before_action :verify_if_archived, only: [:show, :edit, :update]
 
   # GET /residences
   # GET /residences.json
   def index
     current_user.update(owner_enabled: true)
-    @residences = current_user.published_residences
+    @residences = current_user.published_residences.active
   end
 
   # GET /residences/1
@@ -66,9 +67,9 @@ class ResidencesController < ApplicationController
   # DELETE /residences/1
   # DELETE /residences/1.json
   def destroy
-    @residence.destroy
+    @residence.archive
     respond_to do |format|
-      format.html { redirect_to residences_url, notice: 'Residence was successfully destroyed.' }
+      format.html { redirect_to residences_url, notice: 'Residence was successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -94,5 +95,9 @@ class ResidencesController < ApplicationController
 
     def verify_residence_ownership
       redirect_to residences_path unless @residence.user == current_user
+    end
+
+    def verify_if_archived
+      redirect_to residences_path if @residence.archived?
     end
 end

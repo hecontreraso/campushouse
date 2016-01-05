@@ -144,10 +144,10 @@ RSpec.describe ResidencesController, type: :controller do
       @residence = create(:residence, user: controller.current_user)
     end
 
-    it "destroys the requested residence" do
-      expect {
-        delete :destroy, {:id => @residence.to_param}
-      }.to change(Residence, :count).by(-1)
+    it "archives the requested residence" do
+      delete :destroy, {:id => @residence.to_param}
+      @residence.reload
+      expect(@residence).to have_attributes(archived: true)
     end
 
     it "redirects to the residences list" do

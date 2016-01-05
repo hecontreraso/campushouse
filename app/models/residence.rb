@@ -12,6 +12,7 @@
 #  user_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  archived      :boolean          default(FALSE)
 #
 
 class Residence < ActiveRecord::Base
@@ -50,6 +51,12 @@ class Residence < ActiveRecord::Base
     less_than_or_equal_to: 100
   }, allow_nil: true
   validate :must_have_pictures
+
+  scope :active, ->{ where(archived: false) }
+
+  def archive
+    self.update(archived: true)
+  end
 
   private
 
