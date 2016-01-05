@@ -7,15 +7,21 @@ require 'rails_helper'
 RSpec.describe ResidencesController, type: :controller do
 
   let(:valid_attributes) {
-    attributes_for(:residence)
+    {
+      residence: attributes_for(:residence),
+      pictures: { picture: [create(:picture)] }
+    }
   }
-
+ 
   let(:invalid_attributes) {
     {
-      name: "Casa cerca al centro",
-      address: "Carrera 26 #45a 54",
-      price: "error",
-      description: 123
+      residence: {
+        name: "Casa cerca al centro",
+        address: "Carrera 26 #45a 54",
+        price: "error",
+        description: 123
+      },
+      pictures: { picture: [create(:picture)] }
     }
   }
 
@@ -60,30 +66,30 @@ RSpec.describe ResidencesController, type: :controller do
     context "with valid params" do
       it "creates a new Residence" do
         expect {
-          post :create, {:residence => valid_attributes}
+          post :create, valid_attributes
         }.to change(Residence, :count).by(1)
       end
 
       it "assigns a newly created residence as @residence" do
-        post :create, {:residence => valid_attributes}
+        post :create, valid_attributes
         expect(assigns(:residence)).to be_a(Residence)
         expect(assigns(:residence)).to be_persisted
       end
 
       it "redirects to the created residence" do
-        post :create, {:residence => valid_attributes}
+        post :create, valid_attributes
         expect(response).to redirect_to(Residence.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved residence as @residence" do
-        post :create, {:residence => invalid_attributes}
+        post :create, invalid_attributes
         expect(assigns(:residence)).to be_a_new(Residence)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:residence => invalid_attributes}
+        post :create, invalid_attributes
         expect(response).to render_template("new")
       end
     end
@@ -110,24 +116,24 @@ RSpec.describe ResidencesController, type: :controller do
       end
 
       it "assigns the requested residence as @residence" do
-        put :update, {:id => @residence.to_param, :residence => valid_attributes}
+        put :update, valid_attributes.merge(:id => @residence.to_param)
         expect(assigns(:residence)).to eq(@residence)
       end
 
       it "redirects to the residence" do
-        put :update, {:id => @residence.to_param, :residence => valid_attributes}
+        put :update, valid_attributes.merge(:id => @residence.to_param)
         expect(response).to redirect_to(@residence)
       end
     end
 
     context "with invalid params" do
       it "assigns the residence as @residence" do
-        put :update, {:id => @residence.to_param, :residence => invalid_attributes}
+        put :update, invalid_attributes.merge(:id => @residence.to_param)
         expect(assigns(:residence)).to eq(@residence)
       end
 
       it "re-renders the 'edit' template" do
-        put :update, {:id => @residence.to_param, :residence => invalid_attributes}
+        put :update, invalid_attributes.merge(:id => @residence.to_param)
         expect(response).to render_template("edit")
       end
     end

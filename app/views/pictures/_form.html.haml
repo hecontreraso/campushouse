@@ -1,0 +1,8 @@
+= image_tag @pictures.picture
+= form_for(@pictures) do |f|
+  .field
+    = f.label :picture
+    %br/
+    = f.file_field :picture
+  .actions
+    = f.submit

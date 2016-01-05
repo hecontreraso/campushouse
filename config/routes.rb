@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :residences
+  resources :pictures, only: [:destroy], as: 'destroy_picture'
+  
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

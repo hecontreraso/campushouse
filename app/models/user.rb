@@ -7,7 +7,7 @@
 #  owner_enabled          :boolean          default(FALSE)
 #  university_id          :integer
 #  semester               :integer
-#  avatar                 :string
+#  picture                :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null

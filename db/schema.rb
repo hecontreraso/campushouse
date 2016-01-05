@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151222214931) do
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string   "url"
+    t.string   "picture"
     t.integer  "residence_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

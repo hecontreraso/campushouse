@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "residences/index", type: :view do
   before(:each) do
-    assign(:residences, [
-      create(:residence),
-      create(:residence)
-    ])
+    assign(:residences, [create(:residence), create(:residence)])
   end
 
   it "renders a list of residences" do

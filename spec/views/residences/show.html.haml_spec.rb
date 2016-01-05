@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "residences/show", type: :view do
   before(:each) do
-    @residence = assign(:residence, create(:residence))
+    assign(:residence, create(:residence))
+    assign(:pictures, [create(:picture)])
   end
 
   it "renders attributes in <p>" do
@@ -13,5 +14,6 @@ RSpec.describe "residences/show", type: :view do
     expect(rendered).to match(/10/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/2/)
+    expect(rendered).to match(/picture-container/)
   end
 end

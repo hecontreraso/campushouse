@@ -16,7 +16,10 @@
 
 class Residence < ActiveRecord::Base
 	belongs_to :user, inverse_of: :published_residences
-	has_many :pictures
+	
+  has_many :pictures, inverse_of: :residence, dependent: :destroy
+  accepts_nested_attributes_for :pictures, allow_destroy: true
+
 	has_many :ratings
 
 	# Universitises close to this residence
@@ -46,6 +49,13 @@ class Residence < ActiveRecord::Base
     greater_than_or_equal_to: 1,
     less_than_or_equal_to: 100
   }, allow_nil: true
+  validate :must_have_pictures
 
-  mount_uploaders :pictures, ResidenceImagesUploader
+  private
+
+  def must_have_pictures
+    if pictures.empty? or pictures.all? {|picture| picture.marked_for_destruction? }
+      errors.add(:pictures, I18n.t('activerecord.errors.models.pictures.blank'))
+    end
+  end
 end

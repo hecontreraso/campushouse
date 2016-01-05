@@ -34,3 +34,27 @@ es:
               blank: "Ingresa tu email, si no, no podremos contactarte!"
             name:
               blank: "Queremos saber como te llamas :D"
+        residence:
+          attributes:
+            name:
+              blank: "El nombre del anuncio no puede estar vacío"
+            address:
+              blank: "Debes ingresar la dirección, you know."
+            price:
+              blank: "Cuéntanos cuánto cuesta"
+              not_a_number: "Solo puedes ingresar un precio numérico"
+            description:
+              blank: "Ingresa una descripción corta de tu residencia"
+            pictures:
+              blank: "No olvides subir algunas imágenes"
+        pictures:
+          blank: "Selecciona al menos una imagen para tu publicación"
+    fields:
+      residence:
+        name: "Nombre"
+        address: "Dirección"
+        price: "Precio"
+        square_meters: "Tamaño de la habitación (en metros cuadrados)"
+        description: "Resumen"
+        rooms: "Cuántos cupos en total hay en la residencia"
+        images: "Imágenes"

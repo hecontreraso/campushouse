@@ -18,6 +18,10 @@
 %p
   %b Rooms:
   = @residence.rooms
+- @pictures.each do |picture|
+  .picture-container
+    = image_tag picture.picture_url
+    %p= link_to 'Destroy', destroy_picture_path(picture), class: 'delete-link', method: :delete, data: { :confirm => 'Are you sure?' }, remote: true
 
 = link_to 'Edit', edit_residence_path(@residence)
 \|
