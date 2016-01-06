@@ -28,7 +28,7 @@
   - if action_name == 'edit'
     - @actual_pictures.each do |actual_picture|
       .picture-container
-        = image_tag actual_picture.picture_url
+        = image_tag actual_picture.picture.thumb
         %p= link_to 'Destroy', destroy_picture_path(actual_picture), class: 'delete-picture-link', method: :delete, data: { :confirm => 'Are you sure?' }, remote: true
 
   = f.fields_for :pictures, @residence.pictures.new do |builder|

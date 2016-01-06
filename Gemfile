@@ -23,6 +23,8 @@ gem 'omniauth-facebook'
 
 # Image uploading
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# Image processing
+gem 'mini_magick'
 
 # Error detection in production
 gem 'airbrake'
