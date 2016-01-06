@@ -12,4 +12,9 @@
 class Picture < ActiveRecord::Base
 	mount_uploader :picture, ResidencePictureUploader
 	belongs_to :residence
+
+  validates :picture, file_size: {
+  	less_than: 10.megabytes,
+  	message: 'avatar should be less than %{count}'
+  }
 end

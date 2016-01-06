@@ -25,6 +25,10 @@ gem 'omniauth-facebook'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # Image processing
 gem 'mini_magick'
+# Image uploading to Amazon S3
+gem 'fog-aws'
+# Image file size validation
+gem 'file_validators'
 
 # Error detection in production
 gem 'airbrake'
