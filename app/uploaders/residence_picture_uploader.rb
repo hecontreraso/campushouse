@@ -11,7 +11,7 @@ class ResidencePictureUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "residence_pictures/#{model.class.to_s.underscore}/#{model.id}"
+    "residence_pictures"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -24,10 +24,6 @@ class ResidencePictureUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   process resize_to_fit: [1024, 683]
-
-  # def scale(width, height)
-    # do something
-  # end
 
   # Create different versions of your uploaded files:
   version :thumb do
@@ -51,7 +47,13 @@ class ResidencePictureUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "image.jpg" if original_filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
 
 end

@@ -24,6 +24,7 @@ require 'rspec/rails'
 require 'support/devise.rb'
 require 'support/factory_girl.rb'
 require 'support/database_cleaner.rb'
+require 'support/carrierwave.rb'
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

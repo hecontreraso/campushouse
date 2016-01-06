@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :rating do
-    
+    comment "MyComment"
+    value 5
   end
-
 end

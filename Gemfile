@@ -58,6 +58,9 @@ gem 'geocomplete_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Used to collect tests metadata for circleci tests
+gem 'rspec_junit_formatter', '0.2.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

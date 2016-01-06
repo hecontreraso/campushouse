@@ -43,6 +43,7 @@ es:
             price:
               blank: "Cuéntanos cuánto cuesta"
               not_a_number: "Solo puedes ingresar un precio numérico"
+              greater_than_or_equal_to: "El precio mínimo es de 100.000 pesos Colombianos"
             description:
               blank: "Ingresa una descripción corta de tu residencia"
             pictures:
