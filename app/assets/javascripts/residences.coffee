@@ -2,9 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ->
+$(document).on 'ready page:load', ->
 
 	if $('.residences').length != 0
-		$('.delete-link').on 'ajax:success', (evt, data, status, xhr) ->
+		console.log "entered"
+		$('.delete-picture-link').on 'ajax:success', (evt, data, status, xhr) ->
+			console.log "entered entered"
 			this.closest('.picture-container').remove()
 			return

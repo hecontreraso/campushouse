@@ -50,7 +50,6 @@ class Residence < ActiveRecord::Base
     greater_than_or_equal_to: 1,
     less_than_or_equal_to: 100
   }, allow_nil: true
-  validate :must_have_pictures
 
   scope :active, ->{ where(archived: false) }
 
@@ -58,11 +57,13 @@ class Residence < ActiveRecord::Base
     self.update(archived: true)
   end
 
+  # validate :must_have_pictures
   private
 
-  def must_have_pictures
-    if pictures.empty? or pictures.all? {|picture| picture.marked_for_destruction? }
-      errors.add(:pictures, I18n.t('activerecord.errors.models.pictures.blank'))
-    end
-  end
+  # Deprecated.
+  # def must_have_pictures
+  #   if pictures.empty? or pictures.all? {|picture| picture.marked_for_destruction? }
+  #     errors.add(:pictures, I18n.t('activerecord.errors.models.pictures.blank'))
+  #   end
+  # end
 end

@@ -36,5 +36,4 @@ initialize = ->
       form.prepend '<div id="error_explanation">' + data.responseJSON.error + '</div>'
     return
 
-$(document).ready initialize
-$(document).on 'page:load', initialize
+$(document).on 'ready page:load', initialize

@@ -25,6 +25,7 @@ class ResidencesController < ApplicationController
 
   # GET /residences/1/edit
   def edit
+    @actual_pictures = @residence.pictures
   end
 
   # POST /residences
@@ -33,11 +34,7 @@ class ResidencesController < ApplicationController
     @residence = Residence.new(residence_params)
     @residence.user = current_user
 
-    unless params[:pictures].nil?
-      params[:pictures]['picture'].each do |picture|
-         @pictures = @residence.pictures.build(picture: picture)
-      end
-    end
+    build_pictures(params)
     
     respond_to do |format|
       if @residence.save
@@ -53,6 +50,8 @@ class ResidencesController < ApplicationController
   # PATCH/PUT /residences/1
   # PATCH/PUT /residences/1.json
   def update
+    build_pictures(params)
+
     respond_to do |format|
       if @residence.update(residence_params)
         format.html { redirect_to @residence, notice: 'Residence was successfully updated.' }
@@ -99,5 +98,13 @@ class ResidencesController < ApplicationController
 
     def verify_if_archived
       redirect_to residences_path if @residence.archived?
+    end
+
+    def build_pictures(params)
+      unless params[:pictures].nil?
+        params[:pictures]['picture'].each do |picture|
+           @pictures = @residence.pictures.build(picture: picture)
+        end
+      end
     end
 end

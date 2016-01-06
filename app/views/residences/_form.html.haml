@@ -24,10 +24,18 @@
   .field
     = f.label :rooms, I18n.t('activerecord.fields.residence.rooms')
     = f.number_field :rooms
-  = f.fields_for :pictures, @pictures = @residence.pictures.build do |builder|
+
+  - if action_name == 'edit'
+    - @actual_pictures.each do |actual_picture|
+      .picture-container
+        = image_tag actual_picture.picture_url
+        %p= link_to 'Destroy', destroy_picture_path(actual_picture), class: 'delete-picture-link', method: :delete, data: { :confirm => 'Are you sure?' }, remote: true
+
+  = f.fields_for :pictures, @residence.pictures.new do |builder|
     .field
       = builder.label :picture, I18n.t('activerecord.fields.residence.images')
       %br/
       = builder.file_field :picture, multiple: true, name: "pictures[picture][]"
+
   .actions
     = f.submit 'Guardar'
