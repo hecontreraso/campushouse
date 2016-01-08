@@ -303,6 +303,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    seedbank (0.3.0)
     selenium-webdriver (2.48.1)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
@@ -377,6 +378,7 @@ DEPENDENCIES
   rspec_junit_formatter (= 0.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  seedbank
   selenium-webdriver
   shoulda-matchers!
   spring

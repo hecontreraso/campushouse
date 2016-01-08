@@ -17,4 +17,7 @@ class Picture < ActiveRecord::Base
   	less_than: 10.megabytes,
   	message: 'avatar should be less than %{count}'
   }
+
+  delegate :medium, to: :picture
+  delegate :thumb, to: :picture
 end

@@ -35,6 +35,9 @@ gem 'airbrake'
 # Full-fledged user authentication system
 gem 'devise'
 
+# Better seed management
+gem "seedbank"
+
 # Local variables
 gem 'dotenv-rails', :groups => [:development, :test]
 

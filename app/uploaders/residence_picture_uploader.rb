@@ -23,15 +23,15 @@ class ResidencePictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process resize_to_fit: [1024, 683]
+  process resize_to_fill: [1024, 768]
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [230, 153]
+    process resize_to_fill: [230, 172]
   end
 
   version :medium do
-    process resize_to_fit: [460, 306]
+    process resize_to_fill: [460, 345]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

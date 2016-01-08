@@ -1,6 +1,6 @@
-#residences.container-fluid.fill
+.container-fluid.fill
 	.row.fill
-		.col-md-7
+		.col-md-7.vertical-scroll
 			%br	
 			%section.row
 				.col-lg-3.col-md-12
@@ -9,20 +9,23 @@
 				.col-lg-9.col-md-12
 					#price
 			%section.row.residences
-				.col-sm-12.col-md-6
-					%article
-						%img{:src => 'https://a2.muscache.com/im/pictures/108220114/ef781d61_original.jpg?aki_policy=x_medium'}
-						.description-wrapper
-							.text-description-wrapper
-								.residence-title
-									Residencia cerca al centro
-								.private-room
-									Habitación privada
-							.favorite-price-wrapper
-								%i.fa.fa-heart.fa-2x
-									&nbsp;
-								%span.price
-									$100.000
+				- @residences.each do |residence|
+					.col-sm-12.col-md-6
+						%article
+							.image-wrapper
+								= image_tag residence.pictures.first.try(:medium), alt: nil, class: "img-responsive"
+							.description-wrapper
+								.text-description-wrapper
+									.residence-title
+										= residence.name
+									.private-room
+										Habitación privada
+								.favorite-price-wrapper
+									%i.fa.fa-heart.fa-2x
+										&nbsp;
+									%span.price
+										= number_to_currency(residence.price, precision: 0)
+
 		.col-md-5.fill.nopadding
 			%section#map
 
