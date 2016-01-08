@@ -18,7 +18,7 @@
           - if devise_mapping.recoverable?
             .checkbox.alignright
               = link_to "¿Has olvidado tu contraseña?", new_password_path(:user)
-          = f.submit "Iniciar sesión", class: 'btn btn-conf-2 btn-green btn-block'
+          = f.submit "Iniciar sesión", class: 'btn btn-green btn-block'
       .modal-footer
         - if devise_mapping.registerable?
           ¿No tienes una cuenta?

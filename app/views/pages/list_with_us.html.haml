@@ -1,4 +1,26 @@
-#pages
-	%h2
-		Aqui debe ponerse lo mismo que aquí: http://campuscribz.com/listwithus
-	= link_to "Publica tu residencia", residences_path, require_login: true, class: 'btn btn-conf-2 btn-green'
+.container
+	.title
+		%h2 Arrienda cupos a estudiantes
+	%hr/
+	%br/
+	.row
+		.col-xs-12.col-sm-4
+			.icon
+				%i.fa.fa-graduation-cap{:style => "font-size:64px;color:#03C9A9"}
+			%h3 Encuentra estudiantes
+			%p Muchos estudiantes se conectan a Campus House para encontrar una residencia cerca a su universidad.
+		.col-xs-12.col-sm-4
+			.icon
+				%i.fa.fa-envelope{:style => "font-size:64px;color:#03C9A9"}
+			%h3 Recibe ofertas
+			%p Agenda citas y recibe ofertas directamente en tu correo electrónico.
+		.col-xs-12.col-sm-4
+			.icon
+				%i.fa.fa-tablet{:style => "font-size:64px;color:#03C9A9"}
+			%h3 Administra fácilmente
+			%p Administra listados desde tu computador, tablet o teléfono móvil.
+	%br/
+	.subtitle
+		Publica con nosotros gratis
+	%br/
+	.button= link_to "Publicar residencia", residences_path, require_login: true, class: 'btn btn-lg btn-green'

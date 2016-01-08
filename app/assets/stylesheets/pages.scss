@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.pages {
+.pages {
 	.subscribe-input {
 	  width: 65%;
 	  text-align: left;
@@ -128,5 +128,19 @@ body.pages {
 	  hr {
 	    border-top: 1px solid gray;
 	  }
+	}
+}
+
+.pages.list_with_us {
+	.container {
+		h2, h3, h4 {
+			font-weight: bold;
+		}
+		text-align: center;
+		margin-top: 3em;
+		margin-bottom: 3em;
+		.subtitle {
+	    font-size: 24px;
+		}
 	}
 }

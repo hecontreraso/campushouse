@@ -1,7 +1,7 @@
 !!!
-%html
+%html{lang: I18n.locale.to_s}
 	%head
-		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+		%meta{:content => "width=device-width, initial-scale=1, text/html", charset: "UTF-8", "http-equiv" => "Content-Type", :name => "viewport"}/
 		%title Residences
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -17,7 +17,8 @@
 			.container-fluid
 				.navbar-header
 					%a.navbar-brand{:href => root_path} CAMPUS HOUSE
-					- if "#{controller_name}-#{action_name}" != 'pages-home'
+					- if false # Show search bar in navbar in future versions
+					- # if "#{controller_name}-#{action_name}" != 'pages-home'
 						%form.navbar-form.navbar-left{:role => "search"}
 							.input-group
 								%span.input-group-addon
