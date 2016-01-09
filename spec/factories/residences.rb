@@ -10,9 +10,13 @@
 #  description   :text
 #  rooms         :integer
 #  user_id       :integer
+#  archived      :boolean          default(FALSE)
+#  boolean       :boolean          default(FALSE)
+#  latitude      :float
+#  longitude     :float
+#  city_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  archived      :boolean          default(FALSE)
 #
 
 FactoryGirl.define do
@@ -25,6 +29,7 @@ FactoryGirl.define do
 		description "MyText"
 		rooms 2
 		user
+		city
 		before(:create) do |residence|
 		  residence.pictures = [FactoryGirl.build(:picture)]
 	  end

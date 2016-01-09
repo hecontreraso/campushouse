@@ -34,7 +34,8 @@ gem 'file_validators'
 gem 'airbrake'
 # Full-fledged user authentication system
 gem 'devise'
-
+# Geocode for residences and searchs
+gem 'geocoder'
 # Better seed management
 gem "seedbank"
 
@@ -49,8 +50,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# Autocomplete fields with location
-gem 'geocomplete_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -92,3 +91,6 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'webmock'
+end

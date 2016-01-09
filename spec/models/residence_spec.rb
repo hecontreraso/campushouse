@@ -10,9 +10,13 @@
 #  description   :text
 #  rooms         :integer
 #  user_id       :integer
+#  archived      :boolean          default(FALSE)
+#  boolean       :boolean          default(FALSE)
+#  latitude      :float
+#  longitude     :float
+#  city_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  archived      :boolean          default(FALSE)
 #
 
 require 'rails_helper'
@@ -22,8 +26,7 @@ RSpec.describe Residence, type: :model do
 		it { should belong_to :user }
 		it { should have_many(:pictures) }
 		it { should have_many(:ratings) }
-		it { should have_many(:university_residences) }
-		it { should have_many(:universities).through(:university_residences) }
+
 		it { should have_many(:residence_features) }
 		it { should have_many(:features).through(:residence_features) }
 		it { should have_many(:favs) }
@@ -31,6 +34,7 @@ RSpec.describe Residence, type: :model do
 
 		it { should validate_presence_of(:name) }
 		it { should validate_length_of(:name).is_at_most(32) }
+		
 		it { should validate_presence_of(:address) }
 		it { should validate_length_of(:address).is_at_most(64) }
 		it { should validate_length_of(:description).is_at_most(1000) }

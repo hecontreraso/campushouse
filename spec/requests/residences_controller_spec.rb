@@ -8,7 +8,7 @@ RSpec.describe ResidencesController, type: :controller do
 
   let(:valid_attributes) {
     {
-      residence: attributes_for(:residence),
+      residence: attributes_for(:residence).merge(city_id: create(:city).id),
       pictures: { picture: [create(:picture)] }
     }
   }

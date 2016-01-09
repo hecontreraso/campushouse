@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105205857) do
+ActiveRecord::Schema.define(version: 20160109014138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "favs", force: :cascade do |t|
     t.integer  "user_id"
@@ -62,25 +66,30 @@ ActiveRecord::Schema.define(version: 20160105205857) do
     t.text     "description"
     t.integer  "rooms"
     t.integer  "user_id"
+    t.boolean  "archived",                    default: false
+    t.boolean  "boolean",                     default: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "city_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
-    t.boolean  "archived",                    default: false
   end
 
   add_index "residences", ["user_id"], name: "index_residences_on_user_id", using: :btree
 
-  create_table "universities", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "address",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "search_points", force: :cascade do |t|
+    t.string   "input",                  null: false
+    t.integer  "hits",       default: 0
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  create_table "university_residences", force: :cascade do |t|
-    t.integer  "university_id"
-    t.integer  "residence_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+  create_table "universities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

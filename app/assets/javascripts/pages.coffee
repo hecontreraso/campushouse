@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# initialize the autofill functionality in the form
+
+$(document).on 'ready page:load', ->
+	if $('.home').length != 0
+		initializeAutocomplete = ->
+		  input = document.getElementById('search_field')
+		  new (google.maps.places.Autocomplete)(input, componentRestrictions: country: 'co')
+		  return
+
+		google.maps.event.addDomListener window, 'load', initializeAutocomplete

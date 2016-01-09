@@ -31,6 +31,7 @@ class ResidencesController < ApplicationController
   # POST /residences
   # POST /residences.json
   def create
+    # byebug
     @residence = Residence.new(residence_params)
     @residence.user = current_user
 
@@ -86,6 +87,7 @@ class ResidencesController < ApplicationController
         :address,
         :price,
         :square_meters,
+        :city_id,
         :description,
         :rooms,
         pictures_attributes: [:picture]

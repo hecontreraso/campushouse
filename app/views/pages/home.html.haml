@@ -10,53 +10,64 @@
 	.container
 		.row
 			.col-md-8.col-md-offset-2.centered
-				%h1 Encuentra cupos universitarios de calidad
+				%h1
+					= I18n.t('home.hero.title')
 				%h3
-					Seleccionamos los mejores
-					%br>/
-					para que tu no tengas que hacerlo
+					= I18n.t('home.hero.subtitle')
 				%br/
-				.input-group.hero-form
-					%input.form-control{:placeholder => "Busca por universidad", :type => "text"}/
-					%span.input-group-btn
-						%button.btn.btn-conf.btn-green.form-control{:type => "button"} BUSCAR
+				.form-group
+					%form{action: "#{s_path}", method: "get"}
+						.input-group.hero-form
+							= text_field_tag :search, nil, class: "form-control", placeholder: I18n.t('home.hero.form.placeholder'), type: "text", id: "search_field"
+							.input-group-btn
+								%button{type: "submit", class: "btn btn-conf btn-green form-control"}
+									= I18n.t('home.hero.form.button')
 
 / ********** GREY SECTION - BLOG **********
 %section#grey
 	.container
 		.row
 			.col-sm-12.text-center
-				%h2 Encuentra tu universidad
+				%h2
+					= I18n.t('home.second_section.title')
 				%br/
 		.row
 			%article.col-sm-6.col-md-4
 				%a{:href => "#"}
 					=image_tag "nacional.jpg", class: "img-responsive aligncenter"
-					%h2 Nacional
+					%h2
+						= I18n.t('home.second_section.nacional')
 			%article.col-sm-6.col-md-4
 				%a{:href => "#"}
 					=image_tag "javeriana.jpg", class: "img-responsive aligncenter"
-					%h2 Javeriana
+					%h2
+						= I18n.t('home.second_section.javeriana')
 			%article.col-sm-6.col-md-4
 				%a{:href => "#"}
 					=image_tag "andes.jpg", class: "img-responsive aligncenter"
-					%h2 Andes
+					%h2
+						= I18n.t('home.second_section.andes')
 
 / ********** GREY SECTION **********
 %footer
 	.container
 		.row
 			.col-xs-12.col-md-offset-2.col-md-4
-				%h5 Hecho con amor ❤
+				%h5
+					= I18n.t('home.footer.first_section.title')
 				%hr/
 				%p
-					Por estudiantes de la universidad de los Andes y Nacional.
+					=I18n.t('home.footer.first_section.content_1')
 					%br>/
-					Tienes sugerencias? Nos gustaría saber de ti!
+					=I18n.t('home.footer.first_section.content_2')
 			.col-xs-12.col-md-offset-1.col-md-4
-				%h5 Síguenos en las redes
+				%h5
+					=I18n.t('home.footer.social_section.title')
 				%hr/
-				%p (Por ahora solo tenemos facebook)
+				%p
+					=I18n.t('home.footer.social_section.content')
 				%p
 					%a{:href => "www.facebook.com/campushouse"}
 						%i.fa.fa-facebook-official.fa-2x
+
+%script{:src => "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"}

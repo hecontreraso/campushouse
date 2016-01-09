@@ -5,10 +5,12 @@
         - @residence.errors.messages.each do |msg|
           - msg.last.each do |m|
             %li= m
-
   .field
     = f.label :name, I18n.t('activerecord.fields.residence.name')
     = f.text_field :name
+  .field
+    = f.label :city_id, I18n.t('activerecord.fields.residence.city')
+    = f.collection_select(:city_id, City.all, :id, :name)
   .field
     = f.label :address, I18n.t('activerecord.fields.residence.address')
     = f.text_field :address
