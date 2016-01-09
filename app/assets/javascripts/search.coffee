@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'ready page:load', ->
 	if $('.search').length != 0
 		initializeMap = ->
 			map = undefined
@@ -6,8 +6,8 @@ $(document).ready ->
 			mapOptions = undefined
 			mapCanvas = document.getElementById('map')
 			mapOptions =
-				center: new (google.maps.LatLng)(44.5403, -78.5463)
-				zoom: 8
+				center: new (google.maps.LatLng)(map_latitude, map_longitude)
+				zoom: 15
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 				mapTypeControl: false
 			map = new (google.maps.Map)(mapCanvas, mapOptions)

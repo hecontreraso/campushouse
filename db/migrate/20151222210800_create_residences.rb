@@ -8,6 +8,10 @@ class CreateResidences < ActiveRecord::Migration
       t.text :description
       t.integer :rooms
       t.references :user, index: true, foreign_key: true
+      t.boolean :archived, :boolean, default: false
+      t.float :latitude
+      t.float :longitude
+      t.references :city
 
       t.timestamps null: false
     end

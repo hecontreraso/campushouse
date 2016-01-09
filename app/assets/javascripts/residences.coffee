@@ -5,7 +5,6 @@
 $(document).on 'ready page:load', ->
 
 	if $('.residences').length != 0
-		console.log "entered"
 		$('.delete-picture-link').on 'ajax:success', (evt, data, status, xhr) ->
 			this.closest('.picture-container').remove()
 			return

@@ -32,3 +32,8 @@
 = javascript_include_tag 'https://maps.googleapis.com/maps/api/js'
 = stylesheet_link_tag 'freshstyle'
 = javascript_include_tag 'freshslider.1.0.0'
+
+= javascript_tag do
+	window.map_latitude = '#{@map_latitude}';
+	window.map_longitude = '#{@map_longitude}';
+	

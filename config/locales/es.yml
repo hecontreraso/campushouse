@@ -53,9 +53,31 @@ es:
     fields:
       residence:
         name: "Nombre"
+        city: "Ciudad"
         address: "Dirección"
         price: "Precio"
         square_meters: "Tamaño de la habitación (en metros cuadrados)"
         description: "Resumen"
         rooms: "Cuántos cupos en total hay en la residencia"
         images: "Imágenes"
+  home:
+    hero:
+      title: "Encuentra cupos universitarios de calidad"
+      subtitle: "Seleccionamos los mejores para que tu no tengas que hacerlo"
+      form:
+        placeholder: "Busca por universidad"
+        button: "BUSCAR"
+    second_section:
+      title: "Encuentra tu universidad"
+      nacional: "Naciona"
+      javeriana: "Javeriana"
+      andes: "Andes"
+    footer:
+      first_section:
+        title: "HECHO CON AMOR ❤"
+        content_1: "Por estudiantes de la universidad de los Andes y Nacional."
+        content_2: "Tienes sugerencias? Nos gustaría saber de ti!"
+      social_section:
+        title: "SÍGUENOS EN LAS REDES"
+        content: "(Por ahora solo tenemos facebook)"
+

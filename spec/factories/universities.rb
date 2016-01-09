@@ -4,15 +4,13 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
-#  address    :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryGirl.define do
   factory :university do
-    name 'Test university'
-    address 'Carrera 45 con calle 26'
+    name 'Test university name'
   end
 
 end

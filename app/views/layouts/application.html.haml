@@ -1,7 +1,9 @@
 !!!
 %html{lang: I18n.locale.to_s}
 	%head
-		%meta{:content => "width=device-width, initial-scale=1, text/html", charset: "UTF-8", "http-equiv" => "Content-Type", :name => "viewport"}/
+		%meta{"http-equiv" => "Content-Type"}/
+		%meta{charset: "UTF-8"}/
+		%meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
 		%title Residences
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -38,5 +40,5 @@
 							%li
 								= link_to "Iniciar sesión", '#', 'data-toggle' => "modal", 'data-target' => '#SignInModal'
 		= yield
-	= render 'devise/sessions/new'
-	= render 'devise/registrations/new'
+		= render 'devise/sessions/new'
+		= render 'devise/registrations/new'

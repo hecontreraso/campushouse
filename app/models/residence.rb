@@ -10,9 +10,13 @@
 #  description   :text
 #  rooms         :integer
 #  user_id       :integer
+#  archived      :boolean          default(FALSE)
+#  boolean       :boolean          default(FALSE)
+#  latitude      :float
+#  longitude     :float
+#  city_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  archived      :boolean          default(FALSE)
 #
 
 class Residence < ActiveRecord::Base
@@ -23,10 +27,7 @@ class Residence < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
 	has_many :ratings
-
-	# Universitises close to this residence
-	has_many :university_residences
-	has_many :universities, through: :university_residences
+  belongs_to :city, inverse_of: :residences
 
 	# List of features of this residence
 	has_many :residence_features
@@ -51,20 +52,25 @@ class Residence < ActiveRecord::Base
     greater_than_or_equal_to: 1,
     less_than_or_equal_to: 100
   }, allow_nil: true
+  validates :city, presence: true
+
+  geocoded_by :address
+
+  after_validation :geocode, if: "Rails.env.production?"
+  before_validation :format_address
 
   scope :active, ->{ where(archived: false) }
+
 
   def archive
     self.update(archived: true)
   end
 
-  # validate :must_have_pictures
   private
 
-  # Deprecated.
-  # def must_have_pictures
-  #   if pictures.empty? or pictures.all? {|picture| picture.marked_for_destruction? }
-  #     errors.add(:pictures, I18n.t('activerecord.errors.models.pictures.blank'))
-  #   end
-  # end
+  # attach the name of the city to be correctly geocoded
+  def format_address
+    self.address = "#{address}, #{city.name}" unless address.nil? || city.nil?
+  end
+
 end

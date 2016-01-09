@@ -24,7 +24,6 @@
 	  background-size: cover;
 	  .hero-form {
 	    margin: auto;
-	    width: 60%;
 	    input {
 		    border-top-left-radius: 25px !important;
 		    border-bottom-left-radius: 25px !important;
@@ -133,12 +132,16 @@
 
 .pages.list_with_us {
 	.container {
-		h2, h3, h4 {
-			font-weight: bold;
-		}
 		text-align: center;
 		margin-top: 3em;
 		margin-bottom: 3em;
+		h2, h3, h4 {
+			font-weight: bold;
+		}
+		hr {
+		  max-width: 50px;
+		  border-width: 3px;
+		}
 		.subtitle {
 	    font-size: 24px;
 		}
