@@ -11,6 +11,14 @@ $(document).on 'ready page:load', ->
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 				mapTypeControl: false
 			map = new (google.maps.Map)(mapCanvas, mapOptions)
+
+			for marker in JSON.parse(markers)
+				new (google.maps.Marker)(
+					position: {lat: parseFloat(marker.lat), lng: parseFloat(marker.lon)},
+					map: map,
+					title: 'Hello World!'
+				)
+
 			return
 
 		google.maps.event.addDomListener window, 'load', initializeMap
