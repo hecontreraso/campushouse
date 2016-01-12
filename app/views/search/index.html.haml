@@ -10,21 +10,20 @@
 					#price
 			%section.row.residences
 				- @residences.each do |residence|
-					.col-sm-12.col-md-6
-						%article
-							.image-wrapper
-								= image_tag residence.pictures.first.try(:medium), alt: nil, class: "img-responsive"
-							.description-wrapper
-								.text-description-wrapper
-									.residence-title
-										= residence.name
-									.private-room
-										Habitación privada
-								.favorite-price-wrapper
-									%i.fa.fa-heart.fa-2x
-										&nbsp;
-									%span.price
-										= number_to_currency(residence.price, precision: 0)
+					%article{id: "residence-#{residence.id}", class: "col-sm-12 col-md-6"}
+						.image-wrapper
+							= image_tag residence.pictures.first.try(:medium), alt: nil, class: "img-responsive"
+						.description-wrapper
+							.text-description-wrapper
+								.residence-title
+									= residence.name
+								.private-room
+									Habitación privada
+							.favorite-price-wrapper
+								%i.fa.fa-heart.fa-2x
+									&nbsp;
+								%span.price
+									= number_to_currency(residence.price, precision: 0)
 
 		.col-md-5.fill.nopadding
 			%section#map
