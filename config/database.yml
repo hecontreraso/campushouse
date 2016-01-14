@@ -6,6 +6,8 @@ default: &default
 development:
   <<: *default
   database: campushouse_development
+  username: postgres
+  password: lending
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -13,6 +15,8 @@ development:
 test:
   <<: *default
   database: campushouse_test
+  username: postgres
+  password: lending
 
 production:
   <<: *default
