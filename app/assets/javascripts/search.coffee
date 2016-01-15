@@ -21,12 +21,12 @@ $(document).on 'ready page:load', ->
 				)
 
 				# Changes the background-color of the associated listing on mouseover
-				inner_marker.addListener 'mouseover', ((marker_id_copy) ->
+				inner_marker.addListener 'mouseover', ((marker_id_copy, inner_marker_copy) ->
 					->
-						inner_marker.setIcon(marker_gray_image_url)
+						inner_marker_copy.setIcon(marker_gray_image_url)
 						$('#residence-' + marker_id_copy).css("background-color", "rgba(77, 201, 3, 0.3)")
 						return
-				)(marker.id)
+				)(marker.id, inner_marker)
 				
 				# Restore the background-color of the associated listing on mouseout
 				inner_marker.addListener 'mouseout', ((marker_id_copy) ->
