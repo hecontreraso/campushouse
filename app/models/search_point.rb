@@ -15,5 +15,5 @@ class SearchPoint < ActiveRecord::Base
   validates :input, length: { maximum: 128 }, presence: true
 
   geocoded_by :input
-  after_validation :geocode, if: "Rails.env.production?"
+  after_validation :geocode
 end

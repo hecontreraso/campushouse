@@ -3,8 +3,8 @@ class CreateSearchPoints < ActiveRecord::Migration
     create_table :search_points do |t|
       t.string :input, null: false
       t.integer :hits, default: 0
-      t.float :latitude
-      t.float :longitude
+      t.float :latitude, index: true
+      t.float :longitude, index: true
       
       t.timestamps null: false
     end

@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20160109014138) do
     t.datetime "updated_at",                                  null: false
   end
 
+  add_index "residences", ["latitude"], name: "index_residences_on_latitude", using: :btree
+  add_index "residences", ["longitude"], name: "index_residences_on_longitude", using: :btree
   add_index "residences", ["user_id"], name: "index_residences_on_user_id", using: :btree
 
   create_table "search_points", force: :cascade do |t|
@@ -86,11 +88,20 @@ ActiveRecord::Schema.define(version: 20160109014138) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "search_points", ["latitude"], name: "index_search_points_on_latitude", using: :btree
+  add_index "search_points", ["longitude"], name: "index_search_points_on_longitude", using: :btree
+
   create_table "universities", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "search_term", null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "universities", ["latitude"], name: "index_universities_on_latitude", using: :btree
+  add_index "universities", ["longitude"], name: "index_universities_on_longitude", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                   null: false

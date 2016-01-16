@@ -35,6 +35,11 @@
 = javascript_tag do
 	window.map_latitude = '#{@map_latitude}'
 	window.map_longitude = '#{@map_longitude}'
-	window.markers = '#{raw @markers.to_json}'
-	window.marker_image_url = "#{image_url('map-marker.png')}"
-	window.marker_gray_image_url = "#{image_url('map-marker-gray.png')}"
+
+	window.residences = JSON.parse('#{raw @residences.to_json}')
+	window.university = JSON.parse('#{raw @university.to_json}')
+
+	window.residence_marker_url = "#{image_url('map-marker.png')}"
+	window.residence_marker_gray_url = "#{image_url('map-marker-gray.png')}"
+	
+	window.university_marker_url = "#{image_url('university-marker.png')}"

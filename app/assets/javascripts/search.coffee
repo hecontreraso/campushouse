@@ -12,36 +12,50 @@ $(document).on 'ready page:load', ->
 				mapTypeControl: false
 			map = new (google.maps.Map)(mapCanvas, mapOptions)
 
-			# Render the markers on map
-			for marker in JSON.parse(markers)
-				inner_marker = new (google.maps.Marker)(
-					position: {lat: parseFloat(marker.lat), lng: parseFloat(marker.lon)},
+			# Render the residence markers on map
+			for residence in residences
+				marker = new (google.maps.Marker)(
+					position: {lat: parseFloat(residence.latitude), lng: parseFloat(residence.longitude)},
 					map: map,
-					icon: marker_image_url
+					icon: residence_marker_url
 				)
 
 				# Changes the background-color of the associated listing on mouseover
-				inner_marker.addListener 'mouseover', ((marker_id_copy, inner_marker_copy) ->
+				marker.addListener 'mouseover', ((residence_id, marker_copy) ->
 					->
-						inner_marker_copy.setIcon(marker_gray_image_url)
-						$('#residence-' + marker_id_copy).css("background-color", "rgba(77, 201, 3, 0.3)")
+						marker_copy.setIcon(residence_marker_gray_url)
+						$('#residence-' + residence_id).css("background-color", "rgba(77, 201, 3, 0.3)")
 						return
-				)(marker.id, inner_marker)
+				)(residence.id, marker)
 				
 				# Restore the background-color of the associated listing on mouseout
-				inner_marker.addListener 'mouseout', ((marker_id_copy) ->
+				marker.addListener 'mouseout', ((residence_id) ->
 					->
-						$('#residence-' + marker_id_copy).css("background-color", "#f8f8f8")
+						$('#residence-' + residence_id).css("background-color", "#f8f8f8")
 						return
-				)(marker.id)
+				)(residence.id)
 
-			map_style = [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}]
+			# Render the university marker on map
+			new (google.maps.Marker)(
+				position: {lat: parseFloat(university.latitude), lng: parseFloat(university.longitude)},
+				map: map,
+				icon: university_marker_url
+			)
+
+			# Set style for map
+			map_style = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
 			map.setOptions({styles: map_style})
+
+			# Mostrar universidades
+			# Garantizar que se muestren todas las residencias visibles al buscar desde el home
+
+			map.addListener 'center_changed', ->
+				# traer info de todas las residencias dentro del mapa. map.getCenter()
+				# Actualizar los recuadros de la izquierda y los pines
 			return
 
 		google.maps.event.addDomListener window, 'load', initializeMap
 
-		
 		$('#price').freshslider
 			range: true
 			step: 1000
@@ -52,4 +66,3 @@ $(document).on 'ready page:load', ->
 			value: 10
 			onchange: (low, high) ->
 		return
-
