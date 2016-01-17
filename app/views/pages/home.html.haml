@@ -16,9 +16,9 @@
 					= I18n.t('home.hero.subtitle')
 				%br/
 				.form-group
-					%form{action: "#{s_path}", method: "get"}
+					%form{action: "#{search_root_path}", method: "get"}
 						.input-group.hero-form
-							= text_field_tag :search, nil, class: "form-control", placeholder: I18n.t('home.hero.form.placeholder'), type: "text", id: "search_field"
+							= text_field_tag :input, nil, class: "form-control", placeholder: I18n.t('home.hero.form.placeholder'), type: "text", id: "search_field"
 							.input-group-btn
 								%button{type: "submit", class: "btn btn-conf btn-green form-control"}
 									= I18n.t('home.hero.form.button')

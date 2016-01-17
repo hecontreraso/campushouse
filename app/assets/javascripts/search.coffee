@@ -3,7 +3,7 @@ $(document).on 'ready page:load', ->
 		itemsPerPage = 6
 
 		# // This method displays the residences in the left panel.
-		# // Is called on page load (by the initialize pagination method),
+		# // Is called on page load (by the 'initializePagination' method),
 		# // when some pagination button is clicked, and when the map is dragged.
 		loadResidences = (residences_to_show)->
 			$('section.residences').empty()
@@ -18,6 +18,33 @@ $(document).on 'ready page:load', ->
 				residence_html.find('.price').text(residence.price)
 
 				$('section.residences').append(residence_html)
+			return
+
+		# // This method displays the markers of residences in the right panel.
+		# // Is called on page load (by the 'initializeMap' method),
+		# // and when the map is dragged.
+		loadMarkers = (residences_to_show, map) ->
+			for residence in residences_to_show
+				marker = new (google.maps.Marker)(
+					position: {lat: parseFloat(residence.latitude), lng: parseFloat(residence.longitude)},
+					map: map,
+					icon: residence_marker_url
+				)
+
+				# // Changes the background-color of the associated listing on mouseover
+				marker.addListener 'mouseover', ((residence_id, marker_copy) ->
+					->
+						marker_copy.setIcon(residence_marker_gray_url	)
+						$('#residence-' + residence_id).css("background-color", "rgba(77, 201, 3, 0.3)")
+						return
+				)(residence.id, marker)
+				
+				# // Restore the background-color of the associated listing on mouseout
+				marker.addListener 'mouseout', ((residence_id) ->
+					->
+						$('#residence-' + residence_id).css("background-color", "#f8f8f8")
+						return
+				)(residence.id)
 			return
 
 		# // Initialize the pagination buttons 
@@ -53,33 +80,11 @@ $(document).on 'ready page:load', ->
 			mapOptions =
 				center: new (google.maps.LatLng)(map_latitude, map_longitude)
 				zoom: 15
-				maxZoom: 15
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 				mapTypeControl: false
 			map = new (google.maps.Map)(mapCanvas, mapOptions)
 
-			# // Render the residence markers on map (all residences)
-			for residence in residences
-				marker = new (google.maps.Marker)(
-					position: {lat: parseFloat(residence.latitude), lng: parseFloat(residence.longitude)},
-					map: map,
-					icon: residence_marker_url
-				)
-
-				# // Changes the background-color of the associated listing on mouseover
-				marker.addListener 'mouseover', ((residence_id, marker_copy) ->
-					->
-						marker_copy.setIcon(residence_marker_gray_url	)
-						$('#residence-' + residence_id).css("background-color", "rgba(77, 201, 3, 0.3)")
-						return
-				)(residence.id, marker)
-				
-				# // Restore the background-color of the associated listing on mouseout
-				marker.addListener 'mouseout', ((residence_id) ->
-					->
-						$('#residence-' + residence_id).css("background-color", "#f8f8f8")
-						return
-				)(residence.id)
+			loadMarkers(residences, map)
 
 			# // Render the university marker on map
 			new (google.maps.Marker)(
@@ -96,15 +101,21 @@ $(document).on 'ready page:load', ->
 			# // 2. Render the new markers
 			# // 3. Render the new residences
 			map.addListener 'dragend', (e)->
-				new_center = map.getCenter()
-				
-				# // enviar petición ajax con new_center
-				# // Actualizar los pines con las nuevas residencias
-				# // Actualizar los recuadros de la izquierda
 
-				# // AÑADIR MUCHAS RESIDENCIAS, UNAS 24.
-				# // PROBAR EL PAGINADO
-				# // PROGRAMAR EL DRAG EN ESTE MÉTODO
+				if map.getZoom() >= 15
+					$ .ajax search_ajax_path,
+					  accepts: 'application/json'
+					  data:
+					  	lat: map.getCenter().lat()
+					  	lng: map.getCenter().lng()
+					  success: (data) ->
+					    loadResidences data
+					    loadMarkers(data, map)
+					    return
+					  error: (data) ->
+					    console.log 'No se pudieron traer las residencias desde el servidor'
+					    return
+
 				# // PROGRAMAR EL SLIDER PARA QUE FUNCIONE
 				return
 
@@ -113,3 +124,4 @@ $(document).on 'ready page:load', ->
 		initializePagination()
 		initializePriceSlider()
 		google.maps.event.addDomListener window, 'load', initializeMap
+		return

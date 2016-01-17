@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   }
 
   get 'listwithus' => 'pages#list_with_us'
-  get 's' => 'search#index'
-  
+
+  namespace 'search' do
+    root to: :index
+    get 'ajax', to: :ajax
+  end
+
   root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -7,37 +7,34 @@ class SearchController < ApplicationController
 	# 4. Send coordinates of markers to display them in map
 	# 5. Paginar los resultados
 	def index
-		search = params[:search]
+		input = params[:input]
 		# params[:min]
 		# params[:max]
 
-		search_point = SearchPoint.find_or_create_by(input: search)
+		search_point = SearchPoint.find_or_create_by(input: input)
 
-		box = Geocoder::Calculations.bounding_box(
-			[search_point.latitude, search_point.longitude],
-			MAX_SEARCH_RADIUS
-		)
+		@residences = get_residences(search_point.latitude, search_point.longitude)
 
-		@residences = Residence.within_bounding_box(box).includes(:pictures)
-		@residences = ActiveModel::SerializableResource.new(@residences).to_json
-
-		@university = University.find_by(search_term: search)
+		@university = University.find_by(search_term: input)
 
 		@map_latitude = search_point.latitude
 		@map_longitude = search_point.longitude
-
 	end
 
 	#Method called when the users drags the map, so new residences are loaded
-	def ajax_get_residences
-		# map_center
-		box = Geocoder::Calculations.bounding_box(
-			[map_center.latitude, map_center.longitude],
-			MAX_SEARCH_RADIUS
-		)
-		@residences = Residence.within_bounding_box(box)
-
+	def ajax
+		lat = params[:lat]
+		lng = params[:lng]
+		@residences = get_residences(lat, lng)
 		render json: @residences
+	end
+
+	private
+
+	def get_residences(lat, lng)
+		box = Geocoder::Calculations.bounding_box([lat, lng], MAX_SEARCH_RADIUS)
+		residences = Residence.within_bounding_box(box).includes(:pictures)
+		ActiveModel::SerializableResource.new(residences).to_json
 	end
 
 end

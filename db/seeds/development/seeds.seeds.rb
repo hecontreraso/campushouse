@@ -23,11 +23,9 @@ residences = [
   { latitude: 4.6088434, longitude: -74.0730985, city: bogota, name: "Test residence 12", address: "Ak. 7 #22-47", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.5920315, longitude: -74.0725718, city: bogota, name: "Test residence 13", address: "Cl. 10 #0-25E", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.6013004, longitude: -74.0701345, city: bogota, name: "Test residence 14", address: "Calle 17 Nro. 3 - 40", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
-  { latitude: 4.5981187, longitude: -74.0760807, city: bogota, name: "Test residence 15", address: "Cl. 11 #4-14", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.5938365, longitude: -74.0772745, city: bogota, name: "Test residence 16", address: "Calle 10 # 5-32", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.5981356, longitude: -74.0760085, city: bogota, name: "Test residence 17", address: "Cra. 5 #12B-46", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.6305624, longitude: -74.0686448, city: bogota, name: "Test residence 18", address: "Cra. 13 #45-19", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
-  { latitude: 4.6273873, longitude: -74.0954358, city: bogota, name: "Test residence 19", address: "Cra. 37 #24-67", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.6273873, longitude: -74.0954358, city: bogota, name: "Test residence 20", address: "Cl. 24a #44A-57", price: 750_000, square_meters: 13, description: lorem_ipsum, rooms: 17, user: User.first },
   { latitude: 4.6671381, longitude: -74.0479949, city: bogota, name: "Test residence 21", address: "Carrera 7 #86-50", price: 760_000, square_meters: 9, description: lorem_ipsum, rooms: 12, user: User.first }
 ]

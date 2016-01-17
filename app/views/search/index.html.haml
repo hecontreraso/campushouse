@@ -14,7 +14,7 @@
 		.col-md-5.fill.nopadding
 			%section#map
 
-%article#residence_template.col-sm-12.col-md-6{hidden: true}
+%article#residence_template.col-sm-12.col-md-6{ hidden: true }
 	.image-wrapper
 		= image_tag "", alt: nil, class: "img-responsive"
 	.description-wrapper
@@ -26,9 +26,6 @@
 			%i.fa.fa-heart.fa-2x
 				&nbsp;
 			%span.price
-
-
-
 
 = javascript_include_tag 'https://maps.googleapis.com/maps/api/js'
 = javascript_include_tag 'jquery.twbsPagination'
@@ -42,7 +39,8 @@
 	window.residences = JSON.parse('#{raw @residences}')
 	window.university = JSON.parse('#{raw @university.to_json}')
 
+	window.search_ajax_path = '#{search_ajax_path}'
+
 	window.residence_marker_url = "#{image_url('map-marker.png')}"
 	window.residence_marker_gray_url = "#{image_url('map-marker-gray.png')}"
-	
 	window.university_marker_url = "#{image_url('university-marker.png')}"
