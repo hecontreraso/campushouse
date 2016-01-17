@@ -1,12 +1,13 @@
 $(document).on 'ready page:load', ->
 	if $('.search').length != 0
-		itemsPerPage = 18
+		itemsPerPage = 6
 
 		# // This method displays the residences in the left panel.
 		# // Is called on page load (by the initialize pagination method),
 		# // when some pagination button is clicked, and when the map is dragged.
 		loadResidences = (residences_to_show)->
-			console.log residences_to_show
+			$('section.residences').empty()
+
 			for residence in residences_to_show
 				residence_html = $('#residence_template').clone()
 				residence_html.attr('hidden', false)
@@ -27,9 +28,8 @@ $(document).on 'ready page:load', ->
 				totalPages: totalPages
 				visiblePages: 7
 				onPageClick: (event, page) ->
-					# // Base index = (pageNumber - 1) * itemsPerPage
 					baseIndex = (page - 1) * itemsPerPage
-					loadResidences residences.slice(baseIndex, itemsPerPage)
+					loadResidences residences.slice(baseIndex, itemsPerPage * page)
 					return
 			return
 
@@ -53,6 +53,7 @@ $(document).on 'ready page:load', ->
 			mapOptions =
 				center: new (google.maps.LatLng)(map_latitude, map_longitude)
 				zoom: 15
+				maxZoom: 15
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 				mapTypeControl: false
 			map = new (google.maps.Map)(mapCanvas, mapOptions)
@@ -102,8 +103,9 @@ $(document).on 'ready page:load', ->
 				# // Actualizar los recuadros de la izquierda
 
 				# // AÑADIR MUCHAS RESIDENCIAS, UNAS 24.
-				# // AÑADIR PAGINADO, DE 18 RESIDENCIAS
-
+				# // PROBAR EL PAGINADO
+				# // PROGRAMAR EL DRAG EN ESTE MÉTODO
+				# // PROGRAMAR EL SLIDER PARA QUE FUNCIONE
 				return
 
 			return
