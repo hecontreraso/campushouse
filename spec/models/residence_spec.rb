@@ -11,7 +11,6 @@
 #  rooms         :integer
 #  user_id       :integer
 #  archived      :boolean          default(FALSE)
-#  boolean       :boolean          default(FALSE)
 #  latitude      :float
 #  longitude     :float
 #  city_id       :integer

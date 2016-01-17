@@ -18,20 +18,10 @@
 #  updated_at    :datetime         not null
 #
 
-FactoryGirl.define do
+class ResidenceSerializer < ActiveModel::Serializer
+  attributes :id, :name, :price, :picture, :latitude, :longitude
 
-  factory :residence do
-    name "Name"
-		address "Address"
-		price 450_000
-		square_meters 10
-		description "MyText"
-		rooms 2
-		user
-		city
-		before(:create) do |residence|
-		  residence.pictures = [FactoryGirl.build(:picture)]
-	  end
+  def picture
+  	object.pictures.first.medium.url
   end
-
 end

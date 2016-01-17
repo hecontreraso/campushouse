@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20160109014138) do
     t.integer  "rooms"
     t.integer  "user_id"
     t.boolean  "archived",                    default: false
-    t.boolean  "boolean",                     default: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "city_id"

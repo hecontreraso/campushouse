@@ -11,7 +11,6 @@
 #  rooms         :integer
 #  user_id       :integer
 #  archived      :boolean          default(FALSE)
-#  boolean       :boolean          default(FALSE)
 #  latitude      :float
 #  longitude     :float
 #  city_id       :integer
@@ -56,7 +55,7 @@ class Residence < ActiveRecord::Base
 
   geocoded_by :address
 
-  after_validation :geocode
+  after_validation :geocode, if: ->{ Rails.env.production? }
   before_validation :format_address
 
   scope :active, ->{ where(archived: false) }
