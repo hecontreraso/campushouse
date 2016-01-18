@@ -40,6 +40,9 @@
 	window.university = JSON.parse('#{raw @university.to_json}')
 
 	window.search_ajax_path = '#{search_ajax_path}'
+	window.min_search_price = '#{@min_search_price}'
+	window.max_search_price = '#{@max_search_price}'
+	window.itemsPerPage = parseInt('#{@items_per_page}')
 
 	window.residence_marker_url = "#{image_url('map-marker.png')}"
 	window.residence_marker_gray_url = "#{image_url('map-marker-gray.png')}"
