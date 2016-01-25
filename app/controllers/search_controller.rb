@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-	MAX_SEARCH_RADIUS = 2.2
+	MAX_SEARCH_RADIUS = 1.9
 	ITEMS_PER_PAGE = 6
 
 
