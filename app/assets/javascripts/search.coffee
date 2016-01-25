@@ -3,7 +3,8 @@ $(document).on 'ready page:load', ->
 	if $('.search').length != 0
 		initializeMap()
 		initializePagination()
-		window.slider = initializePriceSlider()
+		initializePriceSlider()
+		window.slider = $("#price").data("ionRangeSlider")
 
 		# // Set style for map
 		map_style = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
@@ -91,18 +92,18 @@ initializePagination = ->
 
 
 initializePriceSlider = ->
-	$('#price').freshslider
-		range: true
-		step: 10000
-		text: true
-		min: parseInt(min_search_price)
-		max: parseInt(max_search_price)
-		enabled: true
-		value: 10
-		onchange: (low, high) ->
-			getAndLoadResidences()
-			return
-
+	$('#price').ionRangeSlider
+	  type: 'double'
+	  grid: true
+	  min: min_search_price
+	  max: max_search_price
+	  from: min_search_price
+	  to: max_search_price
+	  step: 10000
+	  prefix: '$'
+	  onFinish: (data) ->
+	  	getAndLoadResidences()
+	return
 
 getAndLoadResidences = ->
 	if typeof slider == "undefined"
@@ -114,13 +115,15 @@ getAndLoadResidences = ->
 		data:
 			lat: map.getCenter().lat()
 			lng: map.getCenter().lng()
-			min_price: slider.getValue()[0]
-			max_price: slider.getValue()[1]
+			min_price: slider.result.from
+			max_price: slider.result.to
 		success: (data) ->
+			console.log data
 			loadLeftPanel data
 			loadMarkers(data)
 			return
 		error: (data) ->
+			console.log data
 			console.log 'No se pudieron traer las residencias desde el servidor'
 			return
 	return
@@ -139,3 +142,7 @@ initializeMap = ->
 	window.map = new (google.maps.Map)(mapCanvas, mapOptions)
 	return
  
+
+ # //Llamar al ajax solo cuando se suelta el mouse (cambiar de plugin)
+ # //Eliminar marcadores antiguos antes de poner los nuevos
+ # //Señalar el marcador cambiándolo a un tercer color al hacer hover en la residencia

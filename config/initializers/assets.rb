@@ -5,8 +5,9 @@ Rails.application.config.assets.version = '1.0'
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
-Rails.application.config.assets.precompile += %w( freshstyle.css )
-Rails.application.config.assets.precompile += %w( freshslider.1.0.0.js )
+Rails.application.config.assets.precompile += %w( ion.rangeSlider.css )
+Rails.application.config.assets.precompile += %w( ion.rangeSlider.skinFlat.css )
+Rails.application.config.assets.precompile += %w( ion.rangeSlider.js )
 Rails.application.config.assets.precompile += %w( jquery.twbsPagination.js )
 
 # Precompile additional assets.
