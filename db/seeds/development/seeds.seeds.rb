@@ -33,7 +33,7 @@ Residence.create!(residences)
 
 for i in 1..residences.count do
   Picture.create!({ 
-    remote_picture_url: "https://campus-house-development.s3.amazonaws.com/residence_pictures/545ace7b-a7d8-4de0-a280-f40fd8132728.jpg",
+    remote_picture_url: "https://s3-us-west-2.amazonaws.com/campushouse-asset/nsts-campus-residence.jpg",
     residence: Residence.find(i)
   })
 end

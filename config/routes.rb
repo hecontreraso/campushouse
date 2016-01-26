@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get 'ajax', to: :ajax
   end
 
+  get 'listing/:id' => 'listing#show', as: :listing
+
   root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

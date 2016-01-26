@@ -1,0 +1,29 @@
+%p#notice= notice
+
+.container
+  .row
+    .col-xs-12.col-md-6
+      %p
+        %b Name:
+        = @residence.name
+      %p
+        %b Address:
+        = @residence.address
+      %p
+        %b Price:
+        = @residence.price
+      %p
+        %b Square meters:
+        = @residence.square_meters
+      %p
+        %b Description:
+        = @residence.description
+      %p
+        %b Rooms:
+        = @residence.rooms
+      = link_to 'Back', session.delete(:return_to)
+    .col-xs-12.col-md-6
+      - @residence.pictures.each do |picture|
+        .picture-container
+          = image_tag picture.medium
+

@@ -53,6 +53,7 @@ loadLeftPanel = (residences_to_show)->
     residence_html.find('img').attr('src', residence.picture)
     residence_html.find('.residence-title').text(residence.name)
     residence_html.find('.price').text(residence.price)
+    residence_html.find('a').attr("href", '/listing/' + residence.id)
 
     $('section.residences').append(residence_html)
   return
@@ -92,7 +93,7 @@ loadMarkers = (residences_to_show) ->
     # // Changes the background-color of the associated listing on mouseover
     marker.addListener 'mouseover', ((residence_id, marker_copy) ->
       ->
-        marker_copy.setIcon(residence_marker_visited_url  )
+        marker_copy.setIcon(residence_marker_visited_url)
         $('#residence-' + residence_id).css("background-color", "rgba(77, 201, 3, 0.3)")
         return
     )(residence.id, marker)
@@ -101,6 +102,12 @@ loadMarkers = (residences_to_show) ->
     marker.addListener 'mouseout', ((residence_id) ->
       ->
         $('#residence-' + residence_id).css("background-color", "#f8f8f8")
+        return
+    )(residence.id)
+
+    marker.addListener 'click', ((residence_id) ->
+      ->
+        goToResidence('residence-' + residence_id)
         return
     )(residence.id)
 
@@ -168,5 +175,11 @@ initializeMap = ->
     mapTypeControl: false
   window.map = new (google.maps.Map)(mapCanvas, mapOptions)
   return
- 
- # //Señalar el marcador cambiándolo a un tercer color al hacer hover en la residencia
+
+# // Move the left panel and change color to residence when clicking marker
+goToResidence = (id) ->
+  console.log "parent"
+  console.log $('#' + id).parent()
+  console.log "element offset top: " + $('#' + id).offset().top
+  $('.vertical-scroll').animate { scrollTop: $('#' + id).position().top }, 'slow'
+  return

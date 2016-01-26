@@ -24,17 +24,18 @@
 	    }
   	}
   	.description-wrapper {
-			display: inline-block;
+		display: inline-block;
     	padding: 20px 10px 30px 10px;
     	width: 100%;
 	    .text-description-wrapper {
+	  		color: #5a5a5a;
 	    	float: left;
 		    font-size: 20px;
 		  	.residence-title {
 		  		font-weight: bold;
 		  	}
 		  	.private-room {
-			    color: rgba(85,85,85,0.50);
+			    color: rgba(85,85,85,0.50) !important;
 		  	}
 	    }
 	    .favorite-price-wrapper {

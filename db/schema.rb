@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160109014138) do
 
   add_index "residences", ["latitude"], name: "index_residences_on_latitude", using: :btree
   add_index "residences", ["longitude"], name: "index_residences_on_longitude", using: :btree
+  add_index "residences", ["price"], name: "index_residences_on_price", using: :btree
   add_index "residences", ["user_id"], name: "index_residences_on_user_id", using: :btree
 
   create_table "search_points", force: :cascade do |t|
