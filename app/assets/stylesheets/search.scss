@@ -1,15 +1,4 @@
 .search {
-  min-height: calc(100% - 52px);
-  height: calc(100% - 52px);
-	.fill { 
-	  min-height: 100%;
-	  height: 100%;
-	}
-  .vertical-scroll {
-    height: inherit;
-    overflow: scroll;
-    overflow-x: hidden;
-  }
   .residences {
     background: rgba(211, 211, 211, 0.20);
     padding-top: 35px;
@@ -54,6 +43,15 @@
 	    }
   	}
   }
+  .heigth-100 {
+	  height: 100%;
+	}
+	.map-right {
+		position: fixed;
+		right: 0px;
+	  height: 100%;
+	  overflow: hidden;
+	}
   #map {
     width: 100%;
     min-height: 100%;

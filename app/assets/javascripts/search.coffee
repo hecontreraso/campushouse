@@ -1,14 +1,15 @@
 $(document).on 'ready page:load', ->
 
   if $('.search').length != 0
+    console.log residences
     initializeMap()
     initializePagination()
     initializePriceSlider()
     window.slider = $("#price").data("ionRangeSlider")
 
     # // Set style for map
-    map_style = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
-    map.setOptions({styles: map_style})
+    # map_style = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
+    # map.setOptions({styles: map_style})
     
     map.addListener 'dragend', (e)->
       if map.getZoom() >= 15
@@ -17,6 +18,7 @@ $(document).on 'ready page:load', ->
 
     window.markers = []
     loadMarkers(residences)
+    
 
     $('article.residence')
       .mouseenter ->
@@ -63,7 +65,6 @@ loadLeftPanel = (residences_to_show)->
 # // Is called on page load (by the 'initializeMap' method),
 # // and when the map is dragged.
 loadMarkers = (residences_to_show) ->
-
   # // Render the university marker on map
   new (google.maps.Marker)(
     position: {lat: parseFloat(university.latitude), lng: parseFloat(university.longitude)},
@@ -164,6 +165,8 @@ getAndLoadResidences = ->
 
 
 initializeMap = ->
+  console.log "center: " + map_latitude + map_longitude
+
   map = undefined
   mapCanvas = undefined
   mapOptions = undefined
